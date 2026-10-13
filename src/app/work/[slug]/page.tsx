@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ARCHIVE_PROJECTS } from "@/data/projects";
 import { CASE_STUDIES_DATA } from "@/data/caseStudies";
 import { ArrowLeft, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { getAssetPath } from "@/lib/imageLoader";
 
 export async function generateStaticParams() {
   return ARCHIVE_PROJECTS.map((p) => ({
@@ -294,18 +295,19 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     }
 
                     if (block.type === "image") {
+                      const imageSrc = getAssetPath(block.src);
                       if (block.layout === "centered-graphic") {
                         return (
                           <figure key={bIdx} className="my-8 flex flex-col items-center">
                             <a
-                              href={block.src}
+                              href={imageSrc}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="group relative max-w-sm sm:max-w-md w-full rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/60 p-6 sm:p-8 shadow-sm flex justify-center items-center cursor-zoom-in"
                               title="Click to view full resolution"
                             >
                               <Image
-                                src={block.src}
+                                src={imageSrc}
                                 alt={block.alt}
                                 width={block.width || 800}
                                 height={block.height || 600}
@@ -329,7 +331,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                       return (
                         <figure key={bIdx} className="my-6 sm:my-8 max-w-4xl mx-auto">
                           <a
-                            href={block.src}
+                            href={imageSrc}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group relative block w-full rounded-2xl md:rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-sm cursor-zoom-in p-2 sm:p-3.5 md:p-5"
@@ -337,7 +339,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                           >
                             <div className="relative w-full flex justify-center items-center max-h-[340px] sm:max-h-[460px] md:max-h-[540px] overflow-hidden">
                               <Image
-                                src={block.src}
+                                src={imageSrc}
                                 alt={block.alt}
                                 width={block.width || 1920}
                                 height={block.height || 1080}

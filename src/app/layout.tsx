@@ -35,10 +35,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/rashi-portfolio/favicon.svg", type: "image/svg+xml" },
     ],
     apple: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/rashi-portfolio/favicon.svg", type: "image/svg+xml" },
     ],
   },
 };

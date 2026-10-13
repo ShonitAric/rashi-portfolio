@@ -106,7 +106,7 @@ export function Hero() {
               {/* Editorial Frame & Layering */}
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border-2 border-neutral-900/10 dark:border-white/10 shadow-lg bg-neutral-100 dark:bg-neutral-800 group">
                 <Image
-                  src="/rashi-portfolio/images/rashi-hero.jpeg"
+                  src="/images/rashi-hero.jpeg"
                   alt="Rashi Chaurasia, Product and UX Designer"
                   fill
                   priority

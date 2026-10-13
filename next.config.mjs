@@ -1,26 +1,11 @@
-// /** @type {import('next').NextConfig} */
-// const repoName = "rashi-portfolio"; // ⚠️ Make sure this exactly matches your GitHub repo name!
-
-// const nextConfig = {
-//   output: "export",
-//   images: {
-//     unoptimized: true,
-//   },
-//   // Add these two lines:
-//   basePath: "/rashi-portfolio",
-//   assetPrefix: "/rashi-portfolio/", // Note the trailing slash!
-// };
-
-// export default nextConfig;
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export", // <-- Add this line to generate static HTML files
+  output: "export",
+  basePath: "/rashi-portfolio",
   images: {
-    unoptimized: true, // <-- Required for GitHub Pages deployment
+    loader: "custom",
+    loaderFile: "./src/lib/imageLoader.ts",
   },
-  // // Add these two lines:
-  // basePath: "/rashi-portfolio",
-  // assetPrefix: "/rashi-portfolio/", // Note the trailing slash!
 };
 
 export default nextConfig;
