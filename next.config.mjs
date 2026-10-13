@@ -6,9 +6,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Add these two lines:
-  basePath: "/rashi-portfolio",
-  assetPrefix: "/rashi-portfolio/", // Note the trailing slash!
+  // // Add these two lines:
+  // basePath: "/rashi-portfolio",
+  // assetPrefix: "/rashi-portfolio/", // Note the trailing slash!
 };
 
 export default nextConfig;

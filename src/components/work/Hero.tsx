@@ -73,7 +73,10 @@ export function Hero() {
                 className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-[#0B513D] text-white hover:bg-[#083B2C] dark:bg-[#10B981] dark:text-neutral-950 dark:hover:bg-[#34D399] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-2"
               >
                 <span>Explore Selected Work</span>
-                <ArrowDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" aria-hidden="true" />
+                <ArrowDown
+                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1"
+                  aria-hidden="true"
+                />
               </a>
 
               <a
@@ -93,14 +96,17 @@ export function Hero() {
               onMouseLeave={handlePhotoMouseLeave}
               style={{
                 transform: `perspective(900px) rotateX(${photoTilt.rotateX}deg) rotateY(${photoTilt.rotateY}deg)`,
-                transition: photoTilt.rotateX === 0 ? "transform 0.5s ease-out" : "transform 0.1s ease-out",
+                transition:
+                  photoTilt.rotateX === 0
+                    ? "transform 0.5s ease-out"
+                    : "transform 0.1s ease-out",
               }}
               className="relative w-full max-w-[250px] sm:max-w-[270px] will-change-transform"
             >
               {/* Editorial Frame & Layering */}
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border-2 border-neutral-900/10 dark:border-white/10 shadow-lg bg-neutral-100 dark:bg-neutral-800 group">
                 <Image
-                  src="/images/rashi-hero.jpeg"
+                  src="/rashi-portfolio/images/rashi-hero.jpeg"
                   alt="Rashi Chaurasia, Product and UX Designer"
                   fill
                   priority
@@ -125,7 +131,9 @@ export function Hero() {
                 className="absolute -top-3 -left-3 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 px-2.5 py-1 rounded-lg shadow-md flex items-center gap-1.5 text-[10px] font-mono font-semibold transition-transform duration-300 hover:scale-105"
               >
                 <CheckCircle2 className="w-3 h-3 text-[#0B513D] dark:text-[#10B981]" />
-                <span className="text-neutral-800 dark:text-neutral-200">Craft × Systems</span>
+                <span className="text-neutral-800 dark:text-neutral-200">
+                  Craft × Systems
+                </span>
               </div>
             </div>
           </div>

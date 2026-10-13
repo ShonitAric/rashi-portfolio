@@ -98,7 +98,7 @@ const TIMELINE_STOPS = [
     detail:
       "Today, I design across field operations and e-commerce—working on complex workflows (Worksite), information architecture, interaction design, search and responsive experiences.",
     awards: ["Field Operations (Worksite)", "Search & Discovery"],
-    logo: "/images/brands/bestbuy.jpeg",
+    logo: "/rashi-portfolio/images/brands/bestbuy.jpeg",
     logoAlt: "Best Buy logo",
   },
 ];
