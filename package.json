@@ -1,8 +1,8 @@
 {
-  "name": "rashi-chaurasia-portfolio",
+  "name": "rashi-portfolio",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://ShonitAric.github.io/rashi-chaurasia-portfolio",
+  "homepage": "https://ShonitAric.github.io/rashi-portfolio",
   "scripts": {
     "deploy": "gh-pages -d build",
     "dev": "next dev",
