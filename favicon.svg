@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Subtle border & rounded squircle background -->
+  <rect width="64" height="64" rx="16" fill="#141416" />
+  <rect x="1" y="1" width="62" height="62" rx="15" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1.5" />
+
+  <!-- Monogram R in Newsreader / Georgia serif italic -->
+  <text
+    x="21"
+    y="44"
+    font-family="'Newsreader', 'Instrument Serif', Georgia, serif"
+    font-size="34"
+    font-weight="700"
+    font-style="italic"
+    fill="#F8F5F2"
+    letter-spacing="-1"
+  >R</text>
+
+  <!-- Signature brand dot -->
+  <circle cx="44.5" cy="41" r="4.2" fill="#10B981" />
+</svg>
