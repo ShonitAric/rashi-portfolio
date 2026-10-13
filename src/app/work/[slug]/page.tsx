@@ -40,7 +40,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   const nextTitle = nextProject?.shortTitle || nextItem.shortTitle;
 
   return (
-    <div className="pt-24 pb-28 md:pt-36 md:pb-36 transition-colors duration-500">
+    <main id="main-content" tabIndex={-1} className="pt-24 pb-28 md:pt-36 md:pb-36 transition-colors duration-500 focus:outline-none">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 md:space-y-24">
         {/* Navigation back */}
         <div>
@@ -508,7 +508,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         <div className="pt-10 border-t border-neutral-200 dark:border-neutral-800 flex justify-between items-center gap-4 w-full">
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors py-2 whitespace-nowrap"
+            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors py-2 whitespace-nowrap focus-visible:ring-2 focus-visible:outline-none"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>All Case Studies</span>
@@ -517,7 +517,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           {nextProject && (
             <Link
               href={nextProject.route}
-              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors py-2 whitespace-nowrap group text-right"
+              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors py-2 whitespace-nowrap group text-right focus-visible:ring-2 focus-visible:outline-none"
             >
               <span>Next Case Study: {nextTitle}</span>
               <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -525,6 +525,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           )}
         </div>
       </div>
-    </div>
+    </main>
   );
 }

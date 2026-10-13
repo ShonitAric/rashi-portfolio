@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { ArrowDown, CheckCircle2 } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 
 export function Hero() {
   const photoRef = useRef<HTMLDivElement>(null);
@@ -67,18 +67,30 @@ export function Hero() {
             </p>
 
             {/* Primary Action CTAs */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
+            <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
               <a
                 href="#selected-work"
-                className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-[#0B513D] text-white hover:bg-[#083B2C] dark:bg-[#10B981] dark:text-neutral-950 dark:hover:bg-[#34D399] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-2"
+                className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#0B513D] text-white hover:bg-[#083B2C] dark:bg-[#10B981] dark:text-neutral-950 dark:hover:bg-[#34D399] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-2"
               >
                 <span>Explore Selected Work</span>
                 <ArrowDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" aria-hidden="true" />
               </a>
 
               <a
+                href="/resume/Rashi_Chaurasia_Resume.pdf"
+                download="Rashi_Chaurasia_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download Resume PDF (opens in new tab)"
+                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 focus-visible:ring-2 hover:-translate-y-0.5 shadow-2xs"
+              >
+                <Download className="w-4 h-4" aria-hidden="true" />
+                <span>Download Resume</span>
+              </a>
+
+              <a
                 href="#the-way-i-work"
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 focus-visible:ring-2"
+                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full border border-transparent hover:border-neutral-300 dark:hover:border-neutral-700 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 focus-visible:ring-2"
               >
                 <span>The Way I Work</span>
               </a>
@@ -117,15 +129,6 @@ export function Hero() {
                     Bengaluru / Global · Product Designer
                   </div>
                 </div>
-              </div>
-
-              {/* Craft annotation badge pinned to corner with subtle float */}
-              <div
-                aria-hidden="true"
-                className="absolute -top-3 -left-3 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 px-2.5 py-1 rounded-lg shadow-md flex items-center gap-1.5 text-[10px] font-mono font-semibold transition-transform duration-300 hover:scale-105"
-              >
-                <CheckCircle2 className="w-3 h-3 text-[#0B513D] dark:text-[#10B981]" />
-                <span className="text-neutral-800 dark:text-neutral-200">Craft × Systems</span>
               </div>
             </div>
           </div>

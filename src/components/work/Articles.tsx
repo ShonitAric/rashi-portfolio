@@ -67,7 +67,8 @@ export function Articles() {
             href="https://medium.com/@divyarashi45"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider uppercase font-mono text-[#0B513D] hover:text-[#083B2C] dark:text-[#10B981] dark:hover:text-[#34D399] transition-colors"
+            aria-label="View all articles on Medium (opens in a new tab)"
+            className="group inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider uppercase font-mono text-[#0B513D] hover:text-[#083B2C] dark:text-[#10B981] dark:hover:text-[#34D399] transition-colors focus-visible:ring-2 focus-visible:outline-none"
           >
             <span>View All on Medium</span>
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -82,13 +83,15 @@ export function Articles() {
               href={article.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col rounded-3xl bg-neutral-50 dark:bg-neutral-900/70 border border-neutral-200/90 dark:border-neutral-800/90 overflow-hidden hover:border-[#0B513D]/60 dark:hover:border-emerald-500/60 shadow-sm hover:shadow-xl transition-all duration-300"
+              aria-label={`${article.title} on Medium (opens in a new tab)`}
+              className="group flex flex-col rounded-3xl bg-neutral-50 dark:bg-neutral-900/70 border border-neutral-200/90 dark:border-neutral-800/90 overflow-hidden hover:border-[#0B513D]/60 dark:hover:border-emerald-500/60 shadow-sm hover:shadow-xl transition-all duration-300 focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-[#0B513D] dark:focus-visible:ring-[#10B981]"
             >
               {/* Article Cover Image */}
               <div className="relative aspect-[16/9] w-full bg-neutral-200 dark:bg-neutral-800 overflow-hidden">
                 <Image
                   src={article.coverImage}
-                  alt={article.title}
+                  alt=""
+                  aria-hidden="true"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover object-center transition-transform duration-500 group-hover:scale-105"

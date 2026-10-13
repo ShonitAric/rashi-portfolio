@@ -104,10 +104,14 @@ export function TheWayIWork() {
         </div>
 
         {/* Core Skills & Tools Running Marquee Ticker */}
-        <div className="space-y-3.5 pt-3 border-t border-neutral-200/60 dark:border-neutral-800/60">
+        <div
+          role="region"
+          aria-label="Core Skills and Tools"
+          className="space-y-3.5 pt-3 border-t border-neutral-200/60 dark:border-neutral-800/60"
+        >
           <div className="flex items-center justify-between">
             <span className="font-mono text-xs font-bold uppercase tracking-widest text-neutral-500 flex items-center gap-2">
-              <Cpu className="w-3.5 h-3.5 text-[#0B513D] dark:text-[#10B981]" />
+              <Cpu className="w-3.5 h-3.5 text-[#0B513D] dark:text-[#10B981]" aria-hidden="true" />
               <span>Core Skills &amp; Tools</span>
             </span>
             <span className="font-mono text-[11px] text-neutral-400 hidden sm:inline">
@@ -115,8 +119,24 @@ export function TheWayIWork() {
             </span>
           </div>
 
+          {/* Screen Reader Semantic Text List (WCAG 1.3.1) */}
+          <div className="sr-only">
+            <h3>Core Skills</h3>
+            <ul>
+              {SKILLS_ROW_1.map((skill) => (
+                <li key={skill}>{skill}</li>
+              ))}
+            </ul>
+            <h3>Tools &amp; Technologies</h3>
+            <ul>
+              {TOOLS_ROW_2.map((tool) => (
+                <li key={tool}>{tool}</li>
+              ))}
+            </ul>
+          </div>
+
           {/* Marquee Track 1: Core Skills */}
-          <div className="relative overflow-hidden py-1 mask-linear-fade">
+          <div aria-hidden="true" className="relative overflow-hidden py-1 mask-linear-fade select-none">
             <div className="flex gap-3 w-max animate-marquee pause-hover">
               {[...SKILLS_ROW_1, ...SKILLS_ROW_1].map((skill, idx) => (
                 <div
@@ -131,7 +151,7 @@ export function TheWayIWork() {
           </div>
 
           {/* Marquee Track 2: Tools & Technologies (Reverse Direction) */}
-          <div className="relative overflow-hidden py-1 mask-linear-fade">
+          <div aria-hidden="true" className="relative overflow-hidden py-1 mask-linear-fade select-none">
             <div className="flex gap-3 w-max animate-marquee-reverse pause-hover">
               {[...TOOLS_ROW_2, ...TOOLS_ROW_2].map((tool, idx) => (
                 <div

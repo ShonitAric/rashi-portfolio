@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, Award, CheckCircle2, Layers, Compass, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Award, CheckCircle2, Layers, Compass, ShieldCheck, Download } from "lucide-react";
 
 interface FrameworkPillar {
   num: string;
@@ -135,7 +135,7 @@ export default function AboutPage() {
   const [activeTimeline, setActiveTimeline] = useState(3);
 
   return (
-    <main className="min-h-screen pt-28 pb-24 transition-colors duration-500">
+    <main id="main-content" tabIndex={-1} className="min-h-screen pt-28 pb-24 transition-colors duration-500 focus:outline-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 md:space-y-24">
         {/* Back Link */}
         <div>
@@ -338,7 +338,9 @@ export default function AboutPage() {
                   type="button"
                   onClick={() => setActiveTimeline(index)}
                   onMouseEnter={() => setActiveTimeline(index)}
-                  className={`text-left p-4 rounded-xl border transition-all duration-300 ${
+                  aria-pressed={isActive}
+                  aria-label={`${stop.year}: ${stop.company} — ${stop.roles}`}
+                  className={`text-left p-4 rounded-xl border transition-all duration-300 focus-visible:ring-2 focus-visible:outline-none ${
                     isActive
                       ? "bg-[#0B513D] text-white border-[#0B513D] dark:bg-emerald-950/80 dark:border-emerald-700 shadow-md"
                       : "bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-neutral-400"
@@ -425,10 +427,15 @@ export default function AboutPage() {
               <ArrowUpRight className="w-4 h-4" />
             </a>
             <a
-              href="mailto:divyarashi45@gmail.com?subject=Resume%20Request%20%E2%80%94%20Rashi%20Chaurasia"
-              className="inline-flex items-center gap-2 px-6 py-4 rounded-full border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 font-bold text-xs sm:text-sm tracking-widest uppercase transition-all"
+              href="/resume/Rashi_Chaurasia_Resume.pdf"
+              download="Rashi_Chaurasia_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download Resume PDF (opens in new tab)"
+              className="inline-flex items-center gap-2 px-6 py-4 rounded-full border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 font-bold text-xs sm:text-sm tracking-widest uppercase transition-all shadow-sm hover:scale-105 focus-visible:ring-2"
             >
-              <span>Request Résumé</span>
+              <Download className="w-4 h-4" />
+              <span>Download Resume</span>
             </a>
           </div>
 
