@@ -2,11 +2,32 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useRouter, usePathname } from "next/navigation";
 import { useModeTheme } from "@/context/ModeThemeContext";
 import { Sparkles, Layers } from "lucide-react";
 
 export function ModeSwitch() {
   const { mode, setMode } = useModeTheme();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleWorkClick = () => {
+    setMode("work");
+    if (pathname !== "/") {
+      router.push("/?mode=work");
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleBeyondClick = () => {
+    setMode("beyond");
+    if (pathname !== "/") {
+      router.push("/?mode=beyond");
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <div
@@ -21,7 +42,7 @@ export function ModeSwitch() {
       {/* WORK Option */}
       <button
         type="button"
-        onClick={() => setMode("work")}
+        onClick={handleWorkClick}
         aria-pressed={mode === "work"}
         className={`relative z-10 flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold tracking-wider uppercase transition-colors duration-200 rounded-full focus-visible:ring-2 focus-visible:ring-offset-1 ${
           mode === "work"
@@ -43,7 +64,7 @@ export function ModeSwitch() {
       {/* BEYOND WORK Option */}
       <button
         type="button"
-        onClick={() => setMode("beyond")}
+        onClick={handleBeyondClick}
         aria-pressed={mode === "beyond"}
         className={`relative z-10 flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold tracking-wider uppercase transition-colors duration-200 rounded-full focus-visible:ring-2 focus-visible:ring-offset-1 ${
           mode === "beyond"

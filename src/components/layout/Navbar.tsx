@@ -10,10 +10,15 @@ import { useModeTheme } from "@/context/ModeThemeContext";
 import { ArrowUpRight, Menu, X, FileText } from "lucide-react";
 
 export function Navbar() {
-  const { mode } = useModeTheme();
+  const { mode, setMode } = useModeTheme();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isWork = mode === "work";
+
+  // Automatically close mobile menu on page or mode change
+  React.useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname, mode]);
 
   // Close mobile navigation drawer with Escape key for keyboard accessibility
   React.useEffect(() => {
@@ -25,6 +30,21 @@ export function Navbar() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [mobileMenuOpen]);
+
+  const handleContactClick = (e: React.MouseEvent) => {
+    if (mode !== "work") {
+      setMode("work");
+    }
+    if (pathname === "/") {
+      e.preventDefault();
+      setTimeout(() => {
+        const el = document.getElementById("contact");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 60);
+    }
+  };
 
   return (
     <>
@@ -123,8 +143,9 @@ export function Navbar() {
                 <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
               </a>
 
-              <a
-                href="#contact"
+              <Link
+                href="/#contact"
+                onClick={handleContactClick}
                 className={`inline-flex items-center gap-1 font-bold transition-all py-1 focus-visible:ring-2 focus-visible:rounded ${
                   isWork
                     ? "text-[#0B513D] hover:text-[#083B2C] dark:text-[#10B981] dark:hover:text-[#34D399]"
@@ -133,7 +154,7 @@ export function Navbar() {
               >
                 <span>Contact</span>
                 <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
-              </a>
+              </Link>
             </nav>
 
             <div className="flex items-center gap-2.5 sm:gap-3">
@@ -206,16 +227,19 @@ export function Navbar() {
                 <span>Resume</span>
                 <span className="text-xs opacity-60">PDF ↗</span>
               </a>
-              <a
-                href="#contact"
-                onClick={() => setMobileMenuOpen(false)}
+              <Link
+                href="/#contact"
+                onClick={(e) => {
+                  setMobileMenuOpen(false);
+                  handleContactClick(e);
+                }}
                 className={`py-2 flex items-center justify-between font-bold ${
                   isWork ? "text-[#0B513D] dark:text-[#10B981]" : "text-[#7C3AED] dark:text-[#C084FC]"
                 }`}
               >
                 <span>Contact</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
           </nav>
         )}

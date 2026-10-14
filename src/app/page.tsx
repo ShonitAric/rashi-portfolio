@@ -14,6 +14,18 @@ import { BeyondWorkView } from "@/components/beyond/BeyondWorkView";
 export default function HomePage() {
   const { mode } = useModeTheme();
 
+  React.useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash === "#contact") {
+      const timer = setTimeout(() => {
+        const el = document.getElementById("contact");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 120);
+      return () => clearTimeout(timer);
+    }
+  }, [mode]);
+
   return (
     <main id="main-content" tabIndex={-1} className="min-h-screen focus:outline-none">
       {mode === "work" ? (
