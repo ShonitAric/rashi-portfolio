@@ -21,7 +21,7 @@ export function ProjectArchive() {
   const visualBehanceProjects = filteredProjects.filter((p) => p.isExternal);
 
   return (
-    <div className="pt-24 pb-28 md:pt-36 md:pb-36 transition-colors duration-500">
+    <main id="main-content" tabIndex={-1} className="pt-24 pb-28 md:pt-36 md:pb-36 transition-colors duration-500 focus:outline-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 md:space-y-16">
         {/* Archive Header */}
         <div className="max-w-4xl space-y-4">
@@ -68,7 +68,11 @@ export function ProjectArchive() {
             ))}
           </div>
 
-          <div className="text-xs font-mono text-neutral-500">
+          <div
+            className="text-xs font-mono text-neutral-500"
+            role="status"
+            aria-live="polite"
+          >
             Showing {filteredProjects.length} projects
           </div>
         </div>
@@ -198,10 +202,11 @@ export function ProjectArchive() {
                 href="https://www.behance.net/divyarashi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#0B513D] dark:text-[#10B981] hover:underline"
+                aria-label="View Full Behance Profile (opens in a new tab)"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#0B513D] dark:text-[#10B981] hover:underline focus-visible:ring-2 focus-visible:outline-none"
               >
                 <span>View Full Behance Profile</span>
-                <ExternalLink className="w-3.5 h-3.5" />
+                <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
               </a>
             </div>
 
@@ -313,13 +318,14 @@ export function ProjectArchive() {
             href="https://www.behance.net/divyarashi"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#0B513D] text-white hover:bg-[#083B2C] dark:bg-[#10B981] dark:text-neutral-950 dark:hover:bg-[#34D399] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-sm hover:shadow-md flex-shrink-0"
+            aria-label="Visit @divyarashi on Behance (opens in a new tab)"
+            className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#0B513D] text-white hover:bg-[#083B2C] dark:bg-[#10B981] dark:text-neutral-950 dark:hover:bg-[#34D399] font-bold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-sm hover:shadow-md flex-shrink-0 focus-visible:ring-2 focus-visible:outline-none"
           >
             <span>Visit @divyarashi on Behance</span>
-            <ExternalLink className="w-4 h-4" />
+            <ExternalLink className="w-4 h-4" aria-hidden="true" />
           </a>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

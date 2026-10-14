@@ -15,7 +15,7 @@ export default function HomePage() {
   const { mode } = useModeTheme();
 
   return (
-    <main id="main-content" className="min-h-screen">
+    <main id="main-content" tabIndex={-1} className="min-h-screen focus:outline-none">
       {mode === "work" ? (
         <>
           {/* 01 HERO */}

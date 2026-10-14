@@ -126,18 +126,20 @@ export function BeyondWorkView() {
                 href={CHESS_CONFIG.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/5 hover:bg-black/10 dark:bg-[#141416] dark:hover:bg-[#1C1C20] text-[#1C1917] dark:text-[#F8F5F2] text-[11px] font-mono font-bold tracking-wider uppercase transition-all border border-[#E5DCD3] dark:border-[#26262A] hover:scale-105"
+                aria-label={`Chess.com profile @${CHESS_CONFIG.username} (opens in a new tab)`}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/5 hover:bg-black/10 dark:bg-[#141416] dark:hover:bg-[#1C1C20] text-[#1C1917] dark:text-[#F8F5F2] text-[11px] font-mono font-bold tracking-wider uppercase transition-all border border-[#E5DCD3] dark:border-[#26262A] hover:scale-105 focus-visible:ring-2 focus-visible:outline-none"
               >
-                <span className="text-[#81B64C]">♟</span>
+                <span className="text-[#81B64C]" aria-hidden="true">♟</span>
                 <span>Chess.com: @{CHESS_CONFIG.username} ↗</span>
               </a>
               <a
                 href={INSTAGRAM_CONFIG.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#7C3AED]/10 hover:bg-[#7C3AED]/20 text-[#6D28D9] dark:bg-[#A855F7]/15 dark:hover:bg-[#A855F7]/25 dark:text-[#C084FC] text-[11px] font-mono font-bold tracking-wider uppercase transition-all border border-[#7C3AED]/25 dark:border-[#A855F7]/30 hover:scale-105"
+                aria-label={`Instagram profile ${INSTAGRAM_CONFIG.handle} (opens in a new tab)`}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#7C3AED]/10 hover:bg-[#7C3AED]/20 text-[#6D28D9] dark:bg-[#A855F7]/15 dark:hover:bg-[#A855F7]/25 dark:text-[#C084FC] text-[11px] font-mono font-bold tracking-wider uppercase transition-all border border-[#7C3AED]/25 dark:border-[#A855F7]/30 hover:scale-105 focus-visible:ring-2 focus-visible:outline-none"
               >
-                <Instagram className="w-3.5 h-3.5" />
+                <Instagram className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>Instagram: {INSTAGRAM_CONFIG.handle} ↗</span>
               </a>
             </div>
@@ -362,6 +364,15 @@ function InlineGalleryCard({
         <div
           role="tablist"
           aria-label={`${title} photo thumbnails`}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowLeft") {
+              e.preventDefault();
+              handlePrev();
+            } else if (e.key === "ArrowRight") {
+              e.preventDefault();
+              handleNext();
+            }
+          }}
           className="flex items-center gap-1.5 overflow-x-auto pb-1 pt-0.5 scrollbar-none"
         >
           {photos.map((photo, idx) => {
@@ -374,7 +385,7 @@ function InlineGalleryCard({
                 aria-label={`Show ${title} photo ${idx + 1}: ${photo.caption}`}
                 type="button"
                 onClick={() => setActiveIdx(idx)}
-                className={`relative flex-shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-lg overflow-hidden transition-all duration-200 border ${
+                className={`relative flex-shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-lg overflow-hidden transition-all duration-200 border focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-[#7C3AED] dark:focus-visible:ring-[#C084FC] ${
                   isSelected
                     ? "border-2 border-[#7C3AED] ring-2 ring-[#7C3AED]/40 dark:border-[#C084FC] dark:ring-[#C084FC]/40 scale-105 shadow-xs z-10"
                     : "border-transparent opacity-60 hover:opacity-100 hover:scale-[1.02]"
@@ -529,7 +540,7 @@ function RunningFitnessCard() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Follow my runs on Strava (opens in new tab)"
-          className="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-[#FC4C02]/10 hover:bg-[#FC4C02]/20 text-[#FC4C02] text-xs font-mono font-bold tracking-wider uppercase transition-colors border border-[#FC4C02]/20 group-hover:border-[#FC4C02]/40"
+          className="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-[#FC4C02]/10 hover:bg-[#FC4C02]/20 text-[#FC4C02] text-xs font-mono font-bold tracking-wider uppercase transition-colors border border-[#FC4C02]/20 group-hover:border-[#FC4C02]/40 focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-[#FC4C02]"
         >
           <span>{STRAVA_CONFIG.cta}</span>
           <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -605,7 +616,7 @@ function ChessInterestCard() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Challenge me on Chess.com (opens in new tab)"
-          className="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-[#81B64C]/15 hover:bg-[#81B64C]/25 text-[#4F752C] dark:text-[#A3E06C] text-xs font-mono font-bold tracking-wider uppercase transition-colors border border-[#81B64C]/30 group-hover:border-[#81B64C]/50"
+          className="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-[#81B64C]/15 hover:bg-[#81B64C]/25 text-[#4F752C] dark:text-[#A3E06C] text-xs font-mono font-bold tracking-wider uppercase transition-colors border border-[#81B64C]/30 group-hover:border-[#81B64C]/50 focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-[#81B64C]"
         >
           <span>{CHESS_CONFIG.cta}</span>
           <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />

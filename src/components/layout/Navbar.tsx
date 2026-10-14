@@ -13,8 +13,18 @@ export function Navbar() {
   const { mode } = useModeTheme();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const isWork = mode === "work";
+
+  // Close mobile navigation drawer with Escape key for keyboard accessibility
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mobileMenuOpen]);
 
   return (
     <>
@@ -68,28 +78,19 @@ export function Navbar() {
               className="hidden lg:flex items-center gap-6 xl:gap-7 text-xs font-semibold tracking-wider uppercase mr-5 lg:mr-6"
             >
               {isWork && (
-                <>
-                  <Link
-                    href="/work"
-                    className={`transition-colors relative py-1 focus-visible:ring-2 focus-visible:rounded ${
-                      pathname === "/work"
-                        ? "text-[#0B513D] dark:text-[#10B981] font-bold"
-                        : "text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white"
-                    }`}
-                  >
-                    Case Studies
-                    {pathname === "/work" && (
-                      <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#0B513D] dark:bg-[#10B981]" />
-                    )}
-                  </Link>
-
-                  <Link
-                    href="/#the-way-i-work"
-                    className="transition-colors py-1 focus-visible:ring-2 focus-visible:rounded text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white"
-                  >
-                    The Way I Work
-                  </Link>
-                </>
+                <Link
+                  href="/work"
+                  className={`transition-colors relative py-1 focus-visible:ring-2 focus-visible:rounded ${
+                    pathname === "/work"
+                      ? "text-[#0B513D] dark:text-[#10B981] font-bold"
+                      : "text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white"
+                  }`}
+                >
+                  Case Studies
+                  {pathname === "/work" && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#0B513D] dark:bg-[#10B981]" />
+                  )}
+                </Link>
               )}
 
               <Link
@@ -108,6 +109,21 @@ export function Navbar() {
               </Link>
 
               <a
+                href="/resume/Rashi_Chaurasia_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Resume (opens in a new tab)"
+                className={`inline-flex items-center gap-1 transition-colors py-1 focus-visible:ring-2 focus-visible:rounded ${
+                  isWork
+                    ? "text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white"
+                    : "text-[#6B6560] hover:text-[#1C1917] dark:text-[#A1A1AA] dark:hover:text-[#F8F5F2]"
+                }`}
+              >
+                <span>Resume</span>
+                <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+              </a>
+
+              <a
                 href="#contact"
                 className={`inline-flex items-center gap-1 font-bold transition-all py-1 focus-visible:ring-2 focus-visible:rounded ${
                   isWork
@@ -115,7 +131,7 @@ export function Navbar() {
                     : "text-[#7C3AED] hover:text-[#5B21B6] dark:text-[#C084FC] dark:hover:text-[#E9D5FF]"
                 }`}
               >
-                <span>Say hi</span>
+                <span>Contact</span>
                 <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
               </a>
             </nav>
@@ -133,6 +149,7 @@ export function Navbar() {
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-navigation"
                 aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
                 className="lg:hidden p-2 rounded-md text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors focus-visible:ring-2"
               >
@@ -151,7 +168,9 @@ export function Navbar() {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div
+          <nav
+            id="mobile-navigation"
+            aria-label="Mobile Navigation"
             className={`lg:hidden border-b px-6 py-6 transition-colors duration-300 ${
               isWork
                 ? "bg-white dark:bg-[#151515] border-neutral-200 dark:border-neutral-800"
@@ -160,23 +179,14 @@ export function Navbar() {
           >
             <div className="flex flex-col gap-4 text-sm font-semibold tracking-wider uppercase">
               {isWork && (
-                <>
-                  <Link
-                    href="/work"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="py-2 border-b border-neutral-100 dark:border-neutral-800 flex items-center justify-between"
-                  >
-                    <span>Case Studies</span>
-                    <span className="text-xs opacity-60">Full Archive →</span>
-                  </Link>
-                  <Link
-                    href="/#the-way-i-work"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="py-2 border-b border-neutral-100 dark:border-neutral-800"
-                  >
-                    The Way I Work (Process & Experience)
-                  </Link>
-                </>
+                <Link
+                  href="/work"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="py-2 border-b border-neutral-100 dark:border-neutral-800 flex items-center justify-between"
+                >
+                  <span>Case Studies</span>
+                  <span className="text-xs opacity-60">Full Archive →</span>
+                </Link>
               )}
               <Link
                 href="/about"
@@ -186,17 +196,28 @@ export function Navbar() {
                 About Me
               </Link>
               <a
+                href="/resume/Rashi_Chaurasia_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Resume (opens in a new tab)"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-2 border-b border-neutral-100 dark:border-neutral-800 flex items-center justify-between"
+              >
+                <span>Resume</span>
+                <span className="text-xs opacity-60">PDF ↗</span>
+              </a>
+              <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className={`py-2 flex items-center justify-between font-bold ${
                   isWork ? "text-[#0B513D] dark:text-[#10B981]" : "text-[#7C3AED] dark:text-[#C084FC]"
                 }`}
               >
-                <span>Say hi</span>
+                <span>Contact</span>
                 <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>
-          </div>
+          </nav>
         )}
       </header>
     </>

@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import { ARCHIVE_PROJECTS } from "@/data/projects";
 import { CASE_STUDIES_DATA } from "@/data/caseStudies";
 import { ArrowLeft, ArrowUpRight, CheckCircle2 } from "lucide-react";
-import { getAssetPath } from "@/lib/imageLoader";
 
 export async function generateStaticParams() {
   return ARCHIVE_PROJECTS.map((p) => ({
@@ -41,7 +40,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   const nextTitle = nextProject?.shortTitle || nextItem.shortTitle;
 
   return (
-    <div className="pt-24 pb-28 md:pt-36 md:pb-36 transition-colors duration-500">
+    <main id="main-content" tabIndex={-1} className="pt-24 pb-28 md:pt-36 md:pb-36 transition-colors duration-500 focus:outline-none">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 md:space-y-24">
         {/* Navigation back */}
         <div>
@@ -295,19 +294,18 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     }
 
                     if (block.type === "image") {
-                      const imageSrc = getAssetPath(block.src);
                       if (block.layout === "centered-graphic") {
                         return (
                           <figure key={bIdx} className="my-8 flex flex-col items-center">
                             <a
-                              href={imageSrc}
+                              href={block.src}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="group relative max-w-sm sm:max-w-md w-full rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/60 p-6 sm:p-8 shadow-sm flex justify-center items-center cursor-zoom-in"
                               title="Click to view full resolution"
                             >
                               <Image
-                                src={imageSrc}
+                                src={block.src}
                                 alt={block.alt}
                                 width={block.width || 800}
                                 height={block.height || 600}
@@ -331,7 +329,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                       return (
                         <figure key={bIdx} className="my-6 sm:my-8 max-w-4xl mx-auto">
                           <a
-                            href={imageSrc}
+                            href={block.src}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group relative block w-full rounded-2xl md:rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-sm cursor-zoom-in p-2 sm:p-3.5 md:p-5"
@@ -339,7 +337,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                           >
                             <div className="relative w-full flex justify-center items-center max-h-[340px] sm:max-h-[460px] md:max-h-[540px] overflow-hidden">
                               <Image
-                                src={imageSrc}
+                                src={block.src}
                                 alt={block.alt}
                                 width={block.width || 1920}
                                 height={block.height || 1080}
@@ -510,7 +508,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         <div className="pt-10 border-t border-neutral-200 dark:border-neutral-800 flex justify-between items-center gap-4 w-full">
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors py-2 whitespace-nowrap"
+            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors py-2 whitespace-nowrap focus-visible:ring-2 focus-visible:outline-none"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>All Case Studies</span>
@@ -519,7 +517,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           {nextProject && (
             <Link
               href={nextProject.route}
-              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors py-2 whitespace-nowrap group text-right"
+              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors py-2 whitespace-nowrap group text-right focus-visible:ring-2 focus-visible:outline-none"
             >
               <span>Next Case Study: {nextTitle}</span>
               <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -527,6 +525,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           )}
         </div>
       </div>
-    </div>
+    </main>
   );
 }

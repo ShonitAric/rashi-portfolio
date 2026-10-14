@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { MessageSquareQuote, ChevronLeft, ChevronRight, X, Quote, Pause, Play } from "lucide-react";
+import { MessageSquareQuote, ChevronLeft, ChevronRight, X, Quote } from "lucide-react";
 
 interface Testimonial {
   id: string;
@@ -20,7 +20,7 @@ const TESTIMONIALS: Testimonial[] = [
     id: "laura-millar",
     name: "Laura Millar",
     headline: "User Experience | Customer Experience | Product Strategy | Enterprise Transformation Executive",
-    relationship: "Leader of the UX Chapter Area",
+    relationship: "Chapter Area Leader",
     date: "August 13, 2026",
     avatar: "/images/testimonials/laura-millar.png",
     snippet:
@@ -93,10 +93,22 @@ const TESTIMONIALS: Testimonial[] = [
 ];
 
 export function Testimonials() {
-  const [isAutoMoving, setIsAutoMoving] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(3);
   const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
+  const modalCloseRef = useRef<HTMLButtonElement>(null);
+  const lastActiveTriggerRef = useRef<HTMLElement | null>(null);
+
+  // Accessible focus restoration when lightbox modal opens/closes
+  useEffect(() => {
+    if (selectedTestimonial) {
+      setTimeout(() => {
+        modalCloseRef.current?.focus();
+      }, 50);
+    } else if (lastActiveTriggerRef.current) {
+      lastActiveTriggerRef.current.focus();
+    }
+  }, [selectedTestimonial]);
 
   // Responsive: 3 on desktop, 2 on tablet, 1 on mobile
   useEffect(() => {
@@ -127,17 +139,21 @@ export function Testimonials() {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedTestimonial) {
+        if (e.key === "Escape") {
+          setSelectedTestimonial(null);
+        }
+        return;
+      }
       if (e.key === "ArrowLeft") {
         handlePrev();
       } else if (e.key === "ArrowRight") {
         handleNext();
-      } else if (e.key === "Escape") {
-        setSelectedTestimonial(null);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [maxIndex]);
+  }, [maxIndex, selectedTestimonial]);
 
   // Card Width & Translation Calculations for Static 3-in-View Carousel
   const getCardStyle = () => {
@@ -181,200 +197,131 @@ export function Testimonials() {
             </p>
           </div>
 
-          {/* Controls: Mode Toggle (Pause / Auto Move) + Left/Right Buttons */}
-          <div className="flex items-center gap-2.5 self-start sm:self-auto">
-            {/* Auto Move Toggle Button */}
+          {/* Controls: Left/Right Buttons */}
+          <div className="flex items-center gap-1.5 self-start sm:self-auto">
             <button
-              onClick={() => setIsAutoMoving(!isAutoMoving)}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 bg-white dark:bg-neutral-900 text-[11px] font-mono font-medium text-neutral-700 dark:text-neutral-300 transition-colors shadow-sm"
-              aria-label={isAutoMoving ? "Pause motion" : "Auto-move carousel slowly"}
+              type="button"
+              onClick={handlePrev}
+              aria-label="Previous recommendations"
+              className="p-2 rounded-full border border-neutral-200 dark:border-neutral-800 hover:border-neutral-900 dark:hover:border-neutral-100 bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-all shadow-sm active:scale-95 focus-visible:ring-2 focus-visible:outline-none"
             >
-              {isAutoMoving ? (
-                <>
-                  <Pause className="w-3 h-3 text-[#0B513D] dark:text-[#10B981]" />
-                  <span>Pause Motion</span>
-                </>
-              ) : (
-                <>
-                  <Play className="w-3 h-3 text-[#0B513D] dark:text-[#10B981]" />
-                  <span>Auto Move</span>
-                </>
-              )}
+              <ChevronLeft className="w-4 h-4" />
             </button>
-
-            {/* Left and Right Carousel Buttons */}
-            <div className="flex items-center gap-1 border-l border-neutral-200 dark:border-neutral-800 pl-2.5">
-              <button
-                onClick={handlePrev}
-                aria-label="Previous recommendations"
-                className="p-2 rounded-full border border-neutral-200 dark:border-neutral-800 hover:border-neutral-900 dark:hover:border-neutral-100 bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-all shadow-sm active:scale-95"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={handleNext}
-                aria-label="Next recommendations"
-                className="p-2 rounded-full border border-neutral-200 dark:border-neutral-800 hover:border-neutral-900 dark:hover:border-neutral-100 bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-all shadow-sm active:scale-95"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Next recommendations"
+              className="p-2 rounded-full border border-neutral-200 dark:border-neutral-800 hover:border-neutral-900 dark:hover:border-neutral-100 bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-all shadow-sm active:scale-95 focus-visible:ring-2 focus-visible:outline-none"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
 
         {/* Carousel Container */}
-        {isAutoMoving ? (
-          /* Slow Moving Carousel Track (75s Calm Glide · Hover to Pause) */
-          <div className="relative overflow-hidden mask-linear-fade py-1">
-            <div className="flex gap-5 w-max animate-marquee-slow pause-hover">
-              {[...TESTIMONIALS, ...TESTIMONIALS].map((t, idx) => (
-                <div
-                  key={`${t.id}-${idx}`}
-                  onClick={() => setSelectedTestimonial(t)}
-                  className="w-[300px] sm:w-[340px] md:w-[370px] flex-shrink-0 flex flex-col justify-between p-6 rounded-3xl bg-neutral-50 dark:bg-neutral-900/80 border border-neutral-200/90 dark:border-neutral-800/90 hover:border-[#0B513D] dark:hover:border-emerald-500 shadow-sm hover:shadow-md transition-all cursor-pointer group"
-                >
-                  <div className="space-y-3.5">
-                    {/* Header */}
-                    <div className="flex items-center gap-3">
-                      <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-neutral-200 dark:ring-neutral-700">
-                        <Image
-                          src={t.avatar}
-                          alt={t.name}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-1.5">
-                          <h3 className="font-bold text-sm sm:text-base text-neutral-950 dark:text-neutral-50 truncate group-hover:text-[#0B513D] dark:group-hover:text-[#10B981] transition-colors">
-                            {t.name}
-                          </h3>
-                          <span className="inline-flex items-center justify-center w-4 h-4 rounded bg-[#0A66C2] text-white text-[9px] font-bold flex-shrink-0">
-                            in
-                          </span>
-                        </div>
-                        <p className="text-[11px] text-neutral-500 dark:text-neutral-400 truncate">
-                          {t.headline}
-                        </p>
-                      </div>
+        <div
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Recommendations from colleagues and leaders"
+          className="relative overflow-hidden"
+        >
+          <div
+            className="flex transition-transform duration-500 ease-out gap-5"
+            style={{
+              transform: getTranslateStyle(),
+            }}
+          >
+            {TESTIMONIALS.map((t) => (
+              <div
+                key={t.id}
+                role="button"
+                tabIndex={0}
+                aria-haspopup="dialog"
+                aria-label={`Read full recommendation letter from ${t.name}, ${t.relationship}`}
+                onClick={(e) => {
+                  lastActiveTriggerRef.current = e.currentTarget;
+                  setSelectedTestimonial(t);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    lastActiveTriggerRef.current = e.currentTarget;
+                    setSelectedTestimonial(t);
+                  }
+                }}
+                style={getCardStyle()}
+                className="flex-shrink-0 flex flex-col justify-between p-6 sm:p-7 rounded-3xl bg-neutral-50 dark:bg-neutral-900/80 border border-neutral-200/90 dark:border-neutral-800/90 hover:border-[#0B513D] dark:hover:border-emerald-500 shadow-sm hover:shadow-md transition-all cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0B513D] dark:focus-visible:ring-[#10B981]"
+              >
+                <div className="space-y-3.5">
+                  {/* Header */}
+                  <div className="flex items-center gap-3.5">
+                    <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-neutral-200 dark:ring-neutral-700 shadow-sm">
+                      <Image
+                        src={t.avatar}
+                        alt={t.name}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
-
-                    {/* Relationship Pill */}
-                    <div>
-                      <span className="inline-block max-w-full text-[10px] font-mono text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 px-2.5 py-0.5 rounded border border-emerald-200/60 dark:border-emerald-800/60 truncate font-medium">
-                        {t.relationship}
-                      </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5">
+                        <h3 className="font-bold text-sm sm:text-base text-neutral-950 dark:text-neutral-50 truncate group-hover:text-[#0B513D] dark:group-hover:text-[#10B981] transition-colors">
+                          {t.name}
+                        </h3>
+                        <span className="inline-flex items-center justify-center w-4 h-4 rounded bg-[#0A66C2] text-white text-[9px] font-bold flex-shrink-0">
+                          in
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-neutral-500 dark:text-neutral-400 truncate">
+                        {t.headline}
+                      </p>
                     </div>
-
-                    {/* Excerpt */}
-                    <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed font-normal line-clamp-4">
-                      &ldquo;{t.snippet}&rdquo;
-                    </p>
                   </div>
 
-                  {/* Read More Footer */}
-                  <div className="pt-3 mt-3 border-t border-neutral-200/70 dark:border-neutral-800/70 flex items-center justify-between text-xs font-mono">
-                    <span className="text-[#0B513D] dark:text-[#10B981] font-bold group-hover:underline underline-offset-4 flex items-center gap-1">
-                      <span>Read full</span>
-                      <span>→</span>
+                  {/* Relationship Pill */}
+                  <div>
+                    <span className="inline-block max-w-full text-[10px] font-mono text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 px-2.5 py-0.5 rounded border border-emerald-200/60 dark:border-emerald-800/60 truncate font-medium">
+                      {t.relationship}
                     </span>
-                    <span className="text-neutral-400 text-[10px]">{t.date}</span>
                   </div>
+
+                  {/* Excerpt */}
+                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed font-normal line-clamp-4">
+                    &ldquo;{t.snippet}&rdquo;
+                  </p>
                 </div>
-              ))}
-            </div>
-          </div>
-        ) : (
-          /* 3-in-One Screen Static Carousel with Smooth Step Slide */
-          <div className="relative overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-out gap-5"
-              style={{
-                transform: getTranslateStyle(),
-              }}
-            >
-              {TESTIMONIALS.map((t) => (
-                <div
-                  key={t.id}
-                  style={getCardStyle()}
-                  className="flex-shrink-0 flex flex-col justify-between p-6 sm:p-7 rounded-3xl bg-neutral-50 dark:bg-neutral-900/80 border border-neutral-200/90 dark:border-neutral-800/90 hover:border-[#0B513D] dark:hover:border-emerald-500 shadow-sm hover:shadow-md transition-all cursor-pointer group"
-                  onClick={() => setSelectedTestimonial(t)}
-                >
-                  <div className="space-y-3.5">
-                    {/* Header */}
-                    <div className="flex items-center gap-3.5">
-                      <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-neutral-200 dark:ring-neutral-700 shadow-sm">
-                        <Image
-                          src={t.avatar}
-                          alt={t.name}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-1.5">
-                          <h3 className="font-bold text-sm sm:text-base text-neutral-950 dark:text-neutral-50 truncate group-hover:text-[#0B513D] dark:group-hover:text-[#10B981] transition-colors">
-                            {t.name}
-                          </h3>
-                          <span className="inline-flex items-center justify-center w-4 h-4 rounded bg-[#0A66C2] text-white text-[9px] font-bold flex-shrink-0">
-                            in
-                          </span>
-                        </div>
-                        <p className="text-[11px] text-neutral-500 dark:text-neutral-400 truncate">
-                          {t.headline}
-                        </p>
-                      </div>
-                    </div>
 
-                    {/* Relationship Pill */}
-                    <div>
-                      <span className="inline-block max-w-full text-[10px] font-mono text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 px-2.5 py-0.5 rounded border border-emerald-200/60 dark:border-emerald-800/60 truncate font-medium">
-                        {t.relationship}
-                      </span>
-                    </div>
-
-                    {/* Excerpt */}
-                    <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed font-normal line-clamp-4">
-                      &ldquo;{t.snippet}&rdquo;
-                    </p>
-                  </div>
-
-                  {/* Read More Footer */}
-                  <div className="pt-4 mt-4 border-t border-neutral-200/70 dark:border-neutral-800/70 flex items-center justify-between text-xs font-mono">
-                    <span className="text-[#0B513D] dark:text-[#10B981] font-bold group-hover:underline underline-offset-4 flex items-center gap-1">
-                      <span>Read full</span>
-                      <span>→</span>
-                    </span>
-                    <span className="text-neutral-400 text-[11px]">{t.date}</span>
-                  </div>
+                {/* Read More Footer */}
+                <div className="pt-4 mt-4 border-t border-neutral-200/70 dark:border-neutral-800/70 flex items-center justify-between text-xs font-mono">
+                  <span className="text-[#0B513D] dark:text-[#10B981] font-bold group-hover:underline underline-offset-4 flex items-center gap-1">
+                    <span>Read full</span>
+                    <span>→</span>
+                  </span>
+                  <span className="text-neutral-400 text-[11px]">{t.date}</span>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        )}
+        </div>
 
         {/* Step Indicator & Hint */}
         <div className="flex items-center justify-between pt-1">
-          {!isAutoMoving ? (
-            <div className="flex items-center gap-2">
-              {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setStartIndex(idx)}
-                  aria-label={`Jump to slide ${idx + 1}`}
-                  className={`transition-all duration-300 rounded-full ${
-                    startIndex === idx
-                      ? "w-6 h-2 bg-[#0B513D] dark:bg-[#10B981]"
-                      : "w-2 h-2 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-400 dark:hover:bg-neutral-600"
-                  }`}
-                />
-              ))}
-            </div>
-          ) : (
-            <span className="font-mono text-[11px] text-neutral-400">
-              Gentle motion active · Hover to pause
-            </span>
-          )}
+          <div className="flex items-center gap-2">
+            {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
+              <button
+                type="button"
+                key={idx}
+                onClick={() => setStartIndex(idx)}
+                aria-label={`Jump to slide ${idx + 1}`}
+                aria-current={startIndex === idx ? "true" : undefined}
+                className={`transition-all duration-300 rounded-full focus-visible:ring-2 focus-visible:outline-none ${
+                  startIndex === idx
+                    ? "w-6 h-2 bg-[#0B513D] dark:bg-[#10B981]"
+                    : "w-2 h-2 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-400 dark:hover:bg-neutral-600"
+                }`}
+              />
+            ))}
+          </div>
 
           <span className="font-mono text-[11px] text-neutral-400 hidden sm:inline">
             Click any card to read complete letter of recommendation
@@ -397,9 +344,11 @@ export function Testimonials() {
           >
             {/* Close Button */}
             <button
+              ref={modalCloseRef}
+              type="button"
               onClick={() => setSelectedTestimonial(null)}
               aria-label="Close recommendation"
-              className="absolute top-5 right-5 p-2 rounded-full border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-300 transition-colors"
+              className="absolute top-5 right-5 p-2 rounded-full border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-300 transition-colors focus-visible:ring-2 focus-visible:outline-none"
             >
               <X className="w-5 h-5" />
             </button>
@@ -460,8 +409,9 @@ export function Testimonials() {
                 Verified LinkedIn Recommendation
               </span>
               <button
+                type="button"
                 onClick={() => setSelectedTestimonial(null)}
-                className="px-4 py-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200 font-medium transition-colors"
+                className="px-4 py-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200 font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none"
               >
                 Close
               </button>

@@ -83,7 +83,8 @@
   animation: marquee-reverse 38s linear infinite;
 }
 
-.pause-hover:hover {
+.pause-hover:hover,
+.pause-hover:focus-within {
   animation-play-state: paused;
 }
 
