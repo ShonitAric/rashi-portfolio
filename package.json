@@ -2,7 +2,7 @@
   "name": "rashi-portfolio",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://ShonitAric.github.io/rashi-portfolio",
+  "homepage": "https://raashidesigns.in",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d out",

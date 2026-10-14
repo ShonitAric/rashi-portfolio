@@ -33,12 +33,13 @@ export const metadata: Metadata = {
     title: "Rashi Chaurasia — Product & UX Designer",
     description: "I make complex things feel simple. Product Designer with 7+ years of systems, research, and craft.",
   },
+  metadataBase: new URL("https://raashidesigns.in"),
   icons: {
     icon: [
-      { url: "/rashi-portfolio/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
     ],
     apple: [
-      { url: "/rashi-portfolio/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
     ],
   },
 };
