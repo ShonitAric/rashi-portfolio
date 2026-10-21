@@ -130,7 +130,9 @@ export function ProjectArchive() {
                           {project.clientOrContext}
                         </span>
                       </div>
-                      <span className="font-mono text-xs text-neutral-400">{project.year}</span>
+                      {project.year && (
+                        <span className="font-mono text-xs text-neutral-400">{project.year}</span>
+                      )}
                     </div>
 
                     <h2
@@ -248,7 +250,6 @@ export function ProjectArchive() {
                         <span className="text-[#0B513D] dark:text-[#10B981] font-bold">
                           {project.number}
                         </span>
-                        <span>{project.year}</span>
                       </div>
 
                       <h3 className="text-lg sm:text-xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 group-hover:text-[#0B513D] dark:group-hover:text-[#10B981] transition-colors leading-snug">

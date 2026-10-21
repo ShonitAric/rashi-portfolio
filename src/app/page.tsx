@@ -12,19 +12,40 @@ import { Contact } from "@/components/work/Contact";
 import { BeyondWorkView } from "@/components/beyond/BeyondWorkView";
 
 export default function HomePage() {
-  const { mode } = useModeTheme();
+  const { mode, setMode } = useModeTheme();
 
   React.useEffect(() => {
-    if (typeof window !== "undefined" && window.location.hash === "#contact") {
-      const timer = setTimeout(() => {
-        const el = document.getElementById("contact");
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
+    let t1: NodeJS.Timeout;
+    let t2: NodeJS.Timeout;
+    let t3: NodeJS.Timeout;
+
+    const handleHash = () => {
+      if (typeof window !== "undefined" && window.location.hash === "#contact") {
+        if (mode !== "work") {
+          setMode("work");
         }
-      }, 120);
-      return () => clearTimeout(timer);
-    }
-  }, [mode]);
+        const scrollToContact = () => {
+          const el = document.getElementById("contact");
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        };
+        scrollToContact();
+        t1 = setTimeout(scrollToContact, 120);
+        t2 = setTimeout(scrollToContact, 350);
+        t3 = setTimeout(scrollToContact, 700);
+      }
+    };
+
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+    return () => {
+      window.removeEventListener("hashchange", handleHash);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
+  }, [mode, setMode]);
 
   return (
     <main id="main-content" tabIndex={-1} className="min-h-screen focus:outline-none">

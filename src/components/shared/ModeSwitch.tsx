@@ -14,7 +14,7 @@ export function ModeSwitch() {
   const handleWorkClick = () => {
     setMode("work");
     if (pathname !== "/") {
-      router.push("/?mode=work");
+      window.location.href = "/?mode=work";
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -23,7 +23,7 @@ export function ModeSwitch() {
   const handleBeyondClick = () => {
     setMode("beyond");
     if (pathname !== "/") {
-      router.push("/?mode=beyond");
+      window.location.href = "/?mode=beyond";
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }

@@ -32,17 +32,25 @@ export function Navbar() {
   }, [mobileMenuOpen]);
 
   const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
     if (mode !== "work") {
       setMode("work");
     }
     if (pathname === "/") {
-      e.preventDefault();
-      setTimeout(() => {
+      if (window.location.hash !== "#contact") {
+        window.history.pushState(null, "", "/#contact");
+      }
+      const scrollToContact = () => {
         const el = document.getElementById("contact");
         if (el) {
           el.scrollIntoView({ behavior: "smooth" });
         }
-      }, 60);
+      };
+      scrollToContact();
+      setTimeout(scrollToContact, 100);
+      setTimeout(scrollToContact, 300);
+    } else {
+      window.location.href = "/#contact";
     }
   };
 
@@ -68,6 +76,12 @@ export function Navbar() {
           <div className="flex items-center">
             <Link
               href="/"
+              onClick={(e) => {
+                if (pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
               className="group flex items-baseline font-black tracking-tighter text-xl sm:text-2xl transition-transform duration-200 active:scale-95 focus-visible:ring-2 focus-visible:rounded"
               aria-label="Rashi Chaurasia — Home"
             >
@@ -97,21 +111,32 @@ export function Navbar() {
               aria-label="Main Navigation"
               className="hidden lg:flex items-center gap-6 xl:gap-7 text-xs font-semibold tracking-wider uppercase mr-5 lg:mr-6"
             >
-              {isWork && (
-                <Link
-                  href="/work"
-                  className={`transition-colors relative py-1 focus-visible:ring-2 focus-visible:rounded ${
-                    pathname === "/work"
+              <Link
+                href="/work"
+                onClick={() => {
+                  if (mode !== "work") setMode("work");
+                }}
+                className={`transition-colors relative py-1 focus-visible:ring-2 focus-visible:rounded ${
+                  pathname === "/work"
+                    ? isWork
                       ? "text-[#0B513D] dark:text-[#10B981] font-bold"
-                      : "text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white"
-                  }`}
-                >
-                  Case Studies
-                  {pathname === "/work" && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#0B513D] dark:bg-[#10B981]" />
-                  )}
-                </Link>
-              )}
+                      : "text-[#7C3AED] dark:text-[#C084FC] font-bold"
+                    : isWork
+                    ? "text-neutral-600 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white"
+                    : "text-[#6B6560] hover:text-[#1C1917] dark:text-[#A1A1AA] dark:hover:text-[#F8F5F2]"
+                }`}
+              >
+                Case Studies
+                {pathname === "/work" && (
+                  <span
+                    className={`absolute -bottom-1 left-0 right-0 h-[2px] ${
+                      isWork
+                        ? "bg-[#0B513D] dark:bg-[#10B981]"
+                        : "bg-[#7C3AED] dark:bg-[#C084FC]"
+                    }`}
+                  />
+                )}
+              </Link>
 
               <Link
                 href="/about"
@@ -199,16 +224,17 @@ export function Navbar() {
             }`}
           >
             <div className="flex flex-col gap-4 text-sm font-semibold tracking-wider uppercase">
-              {isWork && (
-                <Link
-                  href="/work"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="py-2 border-b border-neutral-100 dark:border-neutral-800 flex items-center justify-between"
-                >
-                  <span>Case Studies</span>
-                  <span className="text-xs opacity-60">Full Archive →</span>
-                </Link>
-              )}
+              <Link
+                href="/work"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (mode !== "work") setMode("work");
+                }}
+                className="py-2 border-b border-neutral-100 dark:border-neutral-800 flex items-center justify-between"
+              >
+                <span>Case Studies</span>
+                <span className="text-xs opacity-60">Full Archive →</span>
+              </Link>
               <Link
                 href="/about"
                 onClick={() => setMobileMenuOpen(false)}

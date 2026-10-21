@@ -63,6 +63,11 @@ export function ModeThemeProvider({ children }: { children: React.ReactNode }) {
 
   const setMode = (newMode: Mode) => {
     setModeState(newMode);
+    try {
+      localStorage.setItem("rashi-mode", newMode);
+    } catch {
+      // localStorage may not be accessible in private browsing
+    }
     // Smooth scroll to top when switching major portfolio modes
     window.scrollTo({ top: 0, behavior: "smooth" });
   };

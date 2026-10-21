@@ -61,7 +61,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             </span>
             <span className="text-neutral-400">·</span>
             <span className="font-mono text-xs text-neutral-500 uppercase">
-              {project.clientOrContext} · {project.year}
+              {project.clientOrContext}{project.year ? ` · ${project.year}` : ""}
             </span>
           </div>
 
