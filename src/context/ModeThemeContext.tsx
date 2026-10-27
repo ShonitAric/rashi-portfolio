@@ -68,8 +68,14 @@ export function ModeThemeProvider({ children }: { children: React.ReactNode }) {
     } catch {
       // localStorage may not be accessible in private browsing
     }
-    // Smooth scroll to top when switching major portfolio modes
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (typeof window !== "undefined") {
+      // Clear lingering section hashes (e.g., #contact) when changing modes
+      if (window.location.hash) {
+        window.history.replaceState(null, "", window.location.pathname);
+      }
+      // Smooth scroll to top when switching major portfolio modes
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   const toggleMode = () => {

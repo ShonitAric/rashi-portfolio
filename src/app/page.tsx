@@ -13,6 +13,11 @@ import { BeyondWorkView } from "@/components/beyond/BeyondWorkView";
 
 export default function HomePage() {
   const { mode, setMode } = useModeTheme();
+  const modeRef = React.useRef(mode);
+
+  React.useEffect(() => {
+    modeRef.current = mode;
+  }, [mode]);
 
   React.useEffect(() => {
     let t1: NodeJS.Timeout;
@@ -21,7 +26,7 @@ export default function HomePage() {
 
     const handleHash = () => {
       if (typeof window !== "undefined" && window.location.hash === "#contact") {
-        if (mode !== "work") {
+        if (modeRef.current !== "work") {
           setMode("work");
         }
         const scrollToContact = () => {
@@ -45,7 +50,7 @@ export default function HomePage() {
       clearTimeout(t2);
       clearTimeout(t3);
     };
-  }, [mode, setMode]);
+  }, [setMode]);
 
   return (
     <main id="main-content" tabIndex={-1} className="min-h-screen focus:outline-none">

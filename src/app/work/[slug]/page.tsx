@@ -312,7 +312,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                                 unoptimized={block.unoptimized}
                                 className="w-auto h-auto max-h-[380px] object-contain rounded-lg transition-transform duration-300 group-hover:scale-[1.02]"
                               />
-                              <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 px-3 py-1 rounded-full bg-neutral-950/80 text-white text-[11px] font-mono tracking-wider backdrop-blur-sm pointer-events-none flex items-center gap-1 shadow-lg">
+                              <div className="absolute bottom-3 right-3 opacity-70 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 px-3 py-1 rounded-full bg-neutral-950/80 text-white text-[11px] font-mono tracking-wider backdrop-blur-sm pointer-events-none flex items-center gap-1 shadow-lg">
                                 <span>Full Res</span>
                                 <ArrowUpRight className="w-3 h-3" />
                               </div>
@@ -346,7 +346,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                                 sizes="(max-width: 768px) 88vw, 850px"
                               />
                             </div>
-                            <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 px-2.5 py-1 rounded-full bg-neutral-950/85 text-white text-[11px] font-mono tracking-wider backdrop-blur-sm pointer-events-none flex items-center gap-1 shadow-lg">
+                            <div className="absolute bottom-3 right-3 opacity-70 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 px-2.5 py-1 rounded-full bg-neutral-950/85 text-white text-[11px] font-mono tracking-wider backdrop-blur-sm pointer-events-none flex items-center gap-1 shadow-lg">
                               <span>Full Res</span>
                               <ArrowUpRight className="w-3 h-3" />
                             </div>

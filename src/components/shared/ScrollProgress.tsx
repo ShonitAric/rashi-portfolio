@@ -29,7 +29,7 @@ export function ScrollProgress() {
         className={`h-full transition-all duration-150 ease-out ${
           mode === "work"
             ? "bg-[#0B513D] dark:bg-[#10B981]"
-            : "bg-[#7C3AED] dark:bg-[#C084FC]"
+            : "bg-[#D4801C] dark:bg-[#F0AC52]"
         }`}
         style={{ width: `${progress}%` }}
       />

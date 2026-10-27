@@ -434,8 +434,8 @@ export default function AboutPage() {
               aria-label="Download Resume PDF (opens in new tab)"
               className="inline-flex items-center gap-2 px-6 py-4 rounded-full border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 font-bold text-xs sm:text-sm tracking-widest uppercase transition-all shadow-sm hover:scale-105 focus-visible:ring-2"
             >
-              <Download className="w-4 h-4" />
               <span>Download Resume</span>
+              <Download className="w-4 h-4" />
             </a>
           </div>
 

@@ -30,18 +30,28 @@
   }
 
   [data-mode="beyond"] ::selection {
-    background-color: #7C3AED;
+    background-color: #5A6F4E;
     color: #FFFFFF;
   }
   [data-mode="beyond"].dark ::selection {
-    background-color: #A855F7;
-    color: #0A0A0A;
+    background-color: #E5A54B;
+    color: #121110;
   }
 
-  /* Focus styling */
+  /* High-Contrast WCAG 2.4.11 / 2.4.12 Focus Appearance */
   :focus-visible {
-    outline: 2px solid currentColor;
+    outline: 2px solid #0B513D;
     outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .dark :focus-visible {
+    outline: 2px solid #34D399;
+  }
+  [data-mode="beyond"] :focus-visible {
+    outline: 2px solid #5A6F4E;
+  }
+  [data-mode="beyond"].dark :focus-visible {
+    outline: 2px solid #F0AC52;
   }
 }
 

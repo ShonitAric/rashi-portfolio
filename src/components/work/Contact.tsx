@@ -120,7 +120,7 @@ export function Contact() {
                   className={`inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest ${
                     isWork
                       ? "text-[#0B513D] dark:text-[#10B981]"
-                      : "text-[#6D28D9] dark:text-[#C084FC]"
+                      : "text-[#5A6F4E] dark:text-[#B4C49F]"
                   }`}
                 >
                   <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
@@ -136,7 +136,7 @@ export function Contact() {
                     className={`font-serif italic font-normal ${
                       isWork
                         ? "text-[#0B513D] dark:text-emerald-400"
-                        : "text-[#6D28D9] dark:text-[#C084FC]"
+                        : "text-[#5A6F4E] dark:text-[#B4C49F]"
                     }`}
                   >
                     getting obsessed with?
@@ -165,15 +165,15 @@ export function Contact() {
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                       <span className="text-emerald-700 dark:text-emerald-300 font-semibold">
                         Copied to Clipboard!
                       </span>
+                      <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                     </>
                   ) : (
                     <>
-                      <Copy className="w-3.5 h-3.5 text-neutral-400" />
                       <span>divyarashi45@gmail.com</span>
+                      <Copy className="w-3.5 h-3.5 text-neutral-400" />
                     </>
                   )}
                 </button>
@@ -185,14 +185,14 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Download Resume PDF (opens in new tab)"
-                  className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full border text-xs font-mono font-bold uppercase tracking-wider transition-all shadow-xs hover:scale-105 focus-visible:ring-2 ${
+                  className={`group inline-flex items-center gap-2 px-5 py-2.5 rounded-full border text-xs font-mono font-bold uppercase tracking-wider transition-all shadow-xs hover:scale-105 focus-visible:ring-2 ${
                     isWork
                       ? "border-[#0B513D]/30 bg-[#0B513D]/10 hover:bg-[#0B513D]/20 text-[#0B513D] dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:hover:bg-emerald-500/20 dark:text-emerald-300"
-                      : "border-[#7C3AED]/30 bg-[#7C3AED]/10 hover:bg-[#7C3AED]/20 text-[#6D28D9] dark:border-[#C084FC]/30 dark:bg-[#A855F7]/10 dark:hover:bg-[#A855F7]/20 dark:text-[#C084FC]"
+                      : "border-[#5A6F4E]/30 bg-[#5A6F4E]/10 hover:bg-[#5A6F4E]/20 text-[#47573E] dark:border-[#B4C49F]/30 dark:bg-[#B4C49F]/10 dark:hover:bg-[#B4C49F]/20 dark:text-[#C8D6B6]"
                   }`}
                 >
-                  <Download className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>Download Resume (PDF)</span>
+                  <Download className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-y-0.5" aria-hidden="true" />
                 </a>
               </div>
 
@@ -230,7 +230,7 @@ export function Contact() {
                       className={`w-8 h-8 rounded-lg flex items-center justify-center ${
                         isWork
                           ? "bg-[#0B513D]/10 text-[#0B513D] dark:bg-emerald-500/15 dark:text-emerald-400"
-                          : "bg-[#7C3AED]/10 text-[#6D28D9] dark:bg-[#A855F7]/15 dark:text-[#C084FC]"
+                          : "bg-[#5A6F4E]/10 text-[#5A6F4E] dark:bg-[#B4C49F]/15 dark:text-[#B4C49F]"
                       }`}
                     >
                       <MessageSquare className="w-4 h-4" aria-hidden="true" />
@@ -320,14 +320,14 @@ export function Contact() {
                     <div className="pt-1 flex items-center justify-between gap-3">
                       <button
                         type="submit"
-                        className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-white transition-all shadow-sm hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-offset-2 ${
+                        className={`group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-white transition-all shadow-sm hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-offset-2 ${
                           isWork
                             ? "bg-[#0B513D] hover:bg-[#083B2C] dark:bg-[#10B981] dark:text-neutral-950 dark:hover:bg-[#34D399]"
-                            : "bg-[#7C3AED] hover:bg-[#6D28D9] dark:bg-[#A855F7] dark:text-[#0A0A0A] dark:hover:bg-[#C084FC]"
+                            : "bg-[#5A6F4E] hover:bg-[#435239] dark:bg-[#B4C49F] dark:text-[#1F1710] dark:hover:bg-[#C8D6B6]"
                         }`}
                       >
-                        <Send className="w-3.5 h-3.5" aria-hidden="true" />
                         <span>Send Note</span>
+                        <Send className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
                       </button>
 
                       <a
@@ -343,8 +343,8 @@ export function Contact() {
                   <div className="pt-4 space-y-4">
                     <div className="p-3.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/50 space-y-1.5">
                       <div className="flex items-center gap-2 text-xs font-mono font-bold text-emerald-800 dark:text-emerald-300">
-                        <Check className="w-4 h-4" />
                         <span>Note ready for Rashi!</span>
+                        <Check className="w-4 h-4" />
                       </div>
                       <p className="text-[11px] text-emerald-700 dark:text-emerald-400 font-mono leading-relaxed">
                         Your default email client has been opened to send this note to divyarashi45@gmail.com.
@@ -359,13 +359,13 @@ export function Contact() {
                       >
                         {noteCopied ? (
                           <>
-                            <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                             <span>Copied Note!</span>
+                            <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
                           </>
                         ) : (
                           <>
-                            <Copy className="w-3 h-3 text-neutral-400" />
                             <span>Copy Note</span>
+                            <Copy className="w-3 h-3 text-neutral-400" />
                           </>
                         )}
                       </button>
@@ -375,11 +375,11 @@ export function Contact() {
                         className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-mono font-bold text-white transition-colors ${
                           isWork
                             ? "bg-[#0B513D] hover:bg-[#083B2C] dark:bg-[#10B981] dark:text-neutral-950"
-                            : "bg-[#7C3AED] hover:bg-[#6D28D9] dark:bg-[#A855F7] dark:text-[#0A0A0A]"
+                            : "bg-[#5A6F4E] hover:bg-[#435239] dark:bg-[#B4C49F] dark:text-[#1F1710]"
                         }`}
                       >
-                        <Mail className="w-3 h-3" />
                         <span>Open Email App</span>
+                        <Mail className="w-3 h-3" />
                       </a>
                     </div>
                   </div>

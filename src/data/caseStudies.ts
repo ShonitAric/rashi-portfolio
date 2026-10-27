@@ -589,11 +589,11 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyContent> = {
     slug: "bu-super-league",
     headline: "BU Super League 2026",
     subtitle:
-      "Explored AI-assisted product design by combining human-centered UX practices with generative AI to rapidly prototype and validate concepts.",
-    client: "Internal Sports Championship",
+      "Designed and delivered an internal sports championship platform for 1,000–1,500 Fidelity employees, leveraging AI-assisted workflows in Figma Make through to engineering handoff and internal launch.",
+    client: "Fidelity Investments · Internal BU Championship",
     industry: "Tech",
-    role: "UXR / UXD",
-    platform: "Figma Make",
+    role: "Lead Product & UX Designer",
+    platform: "Internal Web App (Figma Make & Code Handoff)",
     heroImage: "/projects/bu-super-league/hero-thumbnail.png",
     heroAlt: "BU Super League 2026 championship portal on laptop and mobile",
     richSections: [
@@ -604,7 +604,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyContent> = {
           {
             type: "text",
             content:
-              "Generative AI is rapidly changing how digital products are imagined, designed, and built.\n\nHow might AI accelerate creative exploration while allowing human-centered design to guide product strategy, usability, and brand coherence?\n\nTo investigate this, I created BU Super League 2026—a concept platform for an internal sports championship that brought employees together across regions and business units.",
+              "Generative AI is rapidly changing how digital products are imagined, designed, and built.\n\nHow might AI accelerate creative exploration while allowing human-centered design to guide product strategy, usability, and brand coherence?\n\nTo solve this for an active enterprise initiative, I designed BU Super League 2026—an internal championship platform engaging 1,000–1,500 Fidelity employees across regional chapters and business units. What started as an exploration combining generative AI with human UX in Figma Make progressed into an interactive prototype, engineering handoff, and an internally launched championship platform.",
           },
           {
             type: "text",
@@ -651,7 +651,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyContent> = {
           {
             type: "text",
             content:
-              "This was a self-initiated concept project where I led the end-to-end product vision. My responsibilities included:",
+              "I led the end-to-end product and UX design for the championship platform—collaborating with tournament organizers, establishing the design system in Figma Make, and partnering closely with our internal engineering team through handoff and launch for our 1,000–1,500 employee Business Unit at Fidelity. My responsibilities included:",
           },
           {
             type: "list",
@@ -669,7 +669,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyContent> = {
           {
             type: "text",
             content:
-              "While usability testing was outside the scope of this concept, every design decision was grounded in established UX principles rather than purely visual exploration.",
+              "While rapid internal turnaround prioritized agile deployment, every design decision was grounded in human-centered UX principles and validated through iterative stakeholder reviews prior to production development.",
           },
           {
             type: "subheading",
@@ -857,9 +857,9 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyContent> = {
           {
             type: "list",
             items: [
-              "Demonstrated how employee engagement platforms can evolve beyond administrative tools.",
-              "Explored role-based experiences through immersive interaction design.",
-              "Established a scalable design system supporting future expansion.",
+              "Successfully launched an internal sports championship platform engaging 1,000–1,500 Fidelity employees.",
+              "Elevated employee engagement beyond administrative logistics into a celebratory, team-first experience.",
+              "Established a cohesive design system and interactive component library supporting upcoming seasons.",
             ],
           },
           {
@@ -869,9 +869,9 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyContent> = {
           {
             type: "list",
             items: [
-              "Developed an effective workflow combining AI-assisted exploration with traditional UX practices.",
-              "Identified opportunities where AI accelerates creativity without replacing design thinking.",
-              "Strengthened systems thinking through reusable interaction patterns and visual consistency.",
+              "Developed an agile workflow combining AI-assisted exploration in Figma Make with robust UX standards.",
+              "Proved how rapid prototyping accelerates creative momentum without sacrificing information architecture.",
+              "Bridged design and engineering through clear Figma slot specifications and responsive layout guidelines.",
             ],
           },
           {
@@ -892,7 +892,7 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyContent> = {
           {
             type: "text",
             content:
-              "BU Super League fundamentally changed how I think about AI in design. Rather than viewing AI as a shortcut for generating interfaces, I began seeing it as a creative collaborator capable of accelerating exploration while leaving strategy, empathy, and decision-making firmly in human hands.\n\nMore importantly, the project reminded me that meaningful products are rarely defined by their visuals alone. They're defined by the experiences they create, the emotions they evoke, and the communities they help build.\n\nIf I were to continue evolving this concept, I would validate the experience through usability testing, measure engagement across different interaction patterns, and explore how AI could support personalized recommendations without compromising transparency or user trust.",
+              "BU Super League fundamentally changed how I think about AI in design. Rather than viewing AI as a shortcut for generating interfaces, I began seeing it as a creative collaborator capable of accelerating exploration while leaving strategy, empathy, and decision-making firmly in human hands.\n\nMore importantly, the project reminded me that meaningful products are rarely defined by their visuals alone. They're defined by the experiences they create, the emotions they evoke, and the communities they help build.\n\nWith the platform successfully launched internally for the championship, future evolutions focus on evaluating post-tournament participant feedback, tracking multi-season engagement patterns, and refining the AI-assisted component workflow for future enterprise employee events.",
           },
         ],
       },
@@ -1091,39 +1091,40 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyContent> = {
           {
             type: "text",
             content:
-              "Instead of treating Appointment Details as a static screen, I began treating it as a contextual experience.\n\nI categorized information into four layers.",
+              "Technicians don't need all data at all times. In the field, cognitive overload directly slows service velocity.\n\nInstead of treating Appointment Details as a static record, I restructured it as a stage-aware operational hub categorized into distinct information layers:",
           },
           {
             type: "subheading",
-            text: "Persistent Information",
+            text: "01 · Persistent Layer (Anchor Data — Always Present)",
           },
           {
             type: "text",
-            content: "Always needed.",
+            content: "Core data technicians constantly reference regardless of journey phase. Anchored at the top for immediate recognition:",
           },
           {
             type: "list",
             items: [
-              "Customer",
-              "Appointment",
-              "Core work details",
+              "<strong>Customer Identity & Quick Contact:</strong> Name, verified phone, address, access codes.",
+              "<strong>Appointment Time Window:</strong> Current scheduled arrival slot and service status.",
+              "<strong>Primary Job Scope:</strong> Core work order type (Delivery, Repair, Install).",
             ],
           },
           {
             type: "subheading",
-            text: "Contextual Information",
+            text: "02 · Contextual Layer (Stage-Aware — Dynamically Surfaced)",
           },
           {
             type: "text",
-            content: "Changes based on where the technician is in their workflow. Examples:",
+            content: "Surfaces only the actions and instructions required for the technician's immediate physical stage:",
           },
           {
             type: "list",
             items: [
-              "Warehouse readiness",
-              "Delivery requirements",
-              "Transit information",
-              "Arrival instructions",
+              "<strong>Pre-Call Stage:</strong> Customer availability confirmation, special access notes.",
+              "<strong>Warehouse Departure:</strong> Part verification, staging checklist, loading confirmation.",
+              "<strong>In-Transit:</strong> Turn-by-turn navigation shortcut, gate codes, running-late quick notification.",
+              "<strong>On-Site Execution:</strong> Diagnosis checklist, warranty check, part replacement logging.",
+              "<strong>Job Wrap-Up:</strong> Digital signature capture, payment collection, return staging.",
             ],
           },
           {
@@ -1356,296 +1357,371 @@ export const CASE_STUDIES_DATA: Record<string, CaseStudyContent> = {
   },
 
   "search-discovery": {
-    "slug": "search-discovery",
-    "headline": "The products weren't inconsistent. The experience was.",
-    "subtitle": "Auditing the Product Listing Page to identify fragmented interaction patterns and explore a clearer, more predictable shopping experience.",
-    "client": "Search & Discovery — PLP Experience",
-    "industry": "UX Audit · Interaction Design",
-    "role": "Product / UX Designer",
-    "platform": "E-commerce / Product Listing Page",
-    "heroImage": "/projects/search-discovery/search-discovery-cover.png",
-    "heroAlt": "Search & Discovery PLP Experience — Web and App comparison mockup",
-    "richSections": [
-        {
-            "number": "01",
-            "title": "The Situation",
-            "blocks": [
-                {
-                    "type": "subheading",
-                    "text": "The page worked. But the experience didn't always feel connected."
-                },
-                {
-                    "type": "text",
-                    "content": "A Product Listing Page brings together multiple systems: product results, filters, sorting, sponsored content, seller information, recommendations, and merchandising.\n\nIndividually, these elements may function as intended. But across the page, similar information and interactions can be presented differently.\n\nThe challenge was not simply to introduce another feature or redesign the entire page.\n\n<strong>It was to identify where the experience lacked consistency, clarity, or predictability.</strong>"
-                },
-                {
-                    "type": "quote",
-                    "text": "The opportunity wasn't to redesign everything. It was to understand where the experience stopped behaving like one system."
-                }
-            ]
-        },
-        {
-            "number": "02",
-            "title": "Finding the Friction",
-            "blocks": [
-                {
-                    "type": "subheading",
-                    "text": "Looking beyond individual components."
-                },
-                {
-                    "type": "text",
-                    "content": "I examined the PLP as a connected experience, looking for places where customers might encounter similar information or actions presented in different ways.\n\nAreas of investigation included:"
-                },
-                {
-                    "type": "list",
-                    "items": [
-                        "Product information hierarchy",
-                        "Filtering and sorting",
-                        "Third-party seller visibility",
-                        "Sponsored and promoted content",
-                        "Carousels and recommendations",
-                        "Interaction patterns across the experience"
-                    ]
-                },
-                {
-                    "type": "text",
-                    "content": "The goal was to identify inconsistencies that could affect comprehension, discoverability, or decision-making."
-                },
-                {
-                    "type": "subheading",
-                    "text": "Design Question"
-                },
-                {
-                    "type": "text",
-                    "content": "<strong>Where are customers being asked to relearn patterns that should already feel familiar?</strong>"
-                },
-                {
-                    "type": "image",
-                    "src": "/projects/search-discovery/app-vs-web-spacing-audit.png",
-                    "alt": "Interaction and layout density audit comparing App and Mobile Web Product Listing Pages",
-                    "caption": "Audit: Cross-platform comparison examining spacing rhythm, vertical trenches, and card layout density",
-                    "layout": "full"
-                },
-                {
-                    "type": "image",
-                    "src": "/projects/search-discovery/audit-finding-1-divider-treatment.png",
-                    "alt": "UI Audit Finding 01: Divider treatment variations between standard and sponsored product cards",
-                    "caption": "Audit Finding 01: Inconsistent divider treatments across adjacent product cards",
-                    "layout": "full"
-                },
-                {
-                    "type": "image",
-                    "src": "/projects/search-discovery/audit-finding-2-product-spacing.png",
-                    "alt": "UI Audit Finding 02: Vertical spacing and card density inconsistencies across screen sizes",
-                    "caption": "Audit Finding 02: Vertical spacing variations affecting scanning rhythm",
-                    "layout": "full"
-                }
-            ]
-        },
-        {
-            "number": "03",
-            "title": "Defining the Opportunity",
-            "blocks": [
-                {
-                    "type": "subheading",
-                    "text": "Not every difference is a problem."
-                },
-                {
-                    "type": "text",
-                    "content": "Consistency does not mean making every component identical.\n\nA difference becomes worth investigating when it introduces unnecessary effort, uncertainty, or an unexpected interaction.\n\nI framed the audit around three questions:"
-                },
-                {
-                    "type": "list",
-                    "items": [
-                        "<strong>UNDERSTANDABLE</strong> — Can customers quickly recognize what they are looking at and what actions are available?",
-                        "<strong>PREDICTABLE</strong> — Do similar interactions behave consistently across the experience?",
-                        "<strong>INTENTIONAL</strong> — When patterns differ, is there a meaningful reason grounded in the customer's context?"
-                    ]
-                },
-                {
-                    "type": "quote",
-                    "text": "Consistency matters where expectations are shared. Context matters where needs differ."
-                },
-                {
-                    "type": "image",
-                    "src": "/projects/search-discovery/audit-finding-3-sponsored-skus.png",
-                    "alt": "UI Audit Finding 03: Sponsored SKU treatments and badge hierarchy within the product list",
-                    "caption": "Audit Finding 03: Distinct treatment of sponsored SKUs within standard product lists",
-                    "layout": "full"
-                }
-            ]
-        },
-        {
-            "number": "04",
-            "title": "Looking Beyond Our PLP",
-            "blocks": [
-                {
-                    "type": "subheading",
-                    "text": "Researching patterns, not copying competitors."
-                },
-                {
-                    "type": "text",
-                    "content": "I reviewed comparable e-commerce experiences to understand how other retailers approached similar challenges.\n\nThe exploration focused on product presentation, filtering, seller information, promoted content, and discovery interactions.\n\nI used these references to distinguish between:"
-                },
-                {
-                    "type": "list",
-                    "items": [
-                        "<strong>Established conventions</strong> — Patterns customers may already recognize.",
-                        "<strong>Emerging approaches</strong> — Ideas worth exploring further.",
-                        "<strong>Context-dependent solutions</strong> — Patterns that may work elsewhere but need evaluation before adoption."
-                    ]
-                },
-                {
-                    "type": "quote",
-                    "text": "Competitive research gave us reference points, not ready-made answers."
-                }
-            ]
-        },
-        {
-            "number": "05",
-            "title": "From Observations to Opportunities",
-            "blocks": [
-                {
-                    "type": "subheading",
-                    "text": "Turning inconsistencies into design directions."
-                },
-                {
-                    "type": "text",
-                    "content": "Organizing the design opportunities into three concise themes:\n\n<em>These are design opportunity areas, not claims of proven customer problems or completed outcomes.</em>"
-                },
-                {
-                    "type": "list",
-                    "items": [
-                        "<strong>01 — CLARIFY INFORMATION HIERARCHY</strong>: Explore how important product and seller information can be easier to recognize and compare.",
-                        "<strong>02 — STRENGTHEN INTERACTION CONSISTENCY</strong>: Identify opportunities for similar customer actions to follow more predictable patterns.",
-                        "<strong>03 — IMPROVE DISCOVERY WITHOUT ADDING NOISE</strong>: Explore how promoted, recommended, and third-party content can be surfaced without competing excessively with the primary shopping experience."
-                    ]
-                }
-            ]
-        },
-        {
-            "number": "06",
-            "title": "Exploring Third-Party Discovery",
-            "blocks": [
-                {
-                    "type": "subheading",
-                    "text": "Making additional choices easier to explore."
-                },
-                {
-                    "type": "text",
-                    "content": "One area explored within the broader PLP work was the presentation and discovery of third-party products."
-                },
-                {
-                    "type": "subheading",
-                    "text": "Design Question"
-                },
-                {
-                    "type": "text",
-                    "content": "<strong>How might we improve the visibility and exploration of third-party products without disrupting the primary shopping journey?</strong>\n\nThis required balancing discoverability, information hierarchy, customer control, and the surrounding PLP experience."
-                },
-                {
-                    "type": "image",
-                    "src": "/projects/search-discovery/audit-finding-4-carousel-spacing.png",
-                    "alt": "UI Exploration: Third-party carousel card spacing and content grouping",
-                    "caption": "Audit Finding 04 & Exploration: Balancing carousel container spacing and 3P card density",
-                    "layout": "full"
-                }
-            ]
-        },
-        {
-            "number": "07",
-            "title": "Design Explorations",
-            "blocks": [
-                {
-                    "type": "subheading",
-                    "text": "Different directions. Different trade-offs."
-                },
-                {
-                    "type": "text",
-                    "content": "Presenting design alternatives as explorations of specific decisions rather than simply a collection of screens:"
-                },
-                {
-                    "type": "list",
-                    "items": [
-                        "<strong>EXPLORATION A — VISIBILITY</strong>: Explore how the component could become easier to notice while remaining integrated into the PLP.",
-                        "<strong>EXPLORATION B — NAVIGATION</strong>: Explore how customers could browse relevant products without unnecessary interruption.",
-                        "<strong>EXPLORATION C — CONTROL</strong>: Explore lightweight ways to help customers navigate available options, including concepts such as Top-rated sellers · Most relevant · Most discounted."
-                    ]
-                },
-                {
-                    "type": "text",
-                    "content": "<em>These are explored design concepts. They do not imply that all directions were implemented or validated.</em>"
-                }
-            ]
-        },
-        {
-            "number": "08",
-            "title": "Designing for the Whole Page",
-            "blocks": [
-                {
-                    "type": "subheading",
-                    "text": "A better component still has to work inside a busy PLP."
-                },
-                {
-                    "type": "text",
-                    "content": "A carousel or filtering pattern cannot be evaluated only in isolation.\n\nIts placement and behavior also affect the surrounding product results, information hierarchy, promoted content, and scrolling experience.\n\nThe design direction focused on giving relevant content enough presence to be discoverable without allowing it to dominate the customer's primary task."
-                },
-                {
-                    "type": "quote",
-                    "text": "The goal wasn't simply to make a component more visible. It was to make it fit the experience."
-                },
-                {
-                    "type": "image",
-                    "src": "/projects/search-discovery/cross-product-audit-matrix.png",
-                    "alt": "Full-page PLP audit matrix across viewports and product categories",
-                    "caption": "Holistic PLP Matrix: Evaluating full-page vertical rhythm, spacing trenches, and content transitions in context",
-                    "layout": "full"
-                }
-            ]
-        },
-        {
-            "number": "09",
-            "title": "Design Outcomes & Direction",
-            "blocks": [
-                {
-                    "type": "subheading",
-                    "text": "From isolated observations to more intentional patterns."
-                },
-                {
-                    "type": "text",
-                    "content": "The work established design directions focused on:"
-                },
-                {
-                    "type": "list",
-                    "items": [
-                        "<strong>CLEARER HIERARCHY</strong>: Making important information easier to scan and interpret.",
-                        "<strong>MORE PREDICTABLE INTERACTIONS</strong>: Encouraging consistency across similar customer actions.",
-                        "<strong>BETTER DISCOVERY</strong>: Exploring ways to surface third-party content without overwhelming the primary experience.",
-                        "<strong>REUSABLE DESIGN THINKING</strong>: Considering how individual decisions could inform patterns across the PLP."
-                    ]
-                },
-                {
-                    "type": "text",
-                    "content": "<strong>Framing Note:</strong> These represent design directions and intended benefits rather than measured business outcomes or completed production deployments."
-                }
-            ]
-        },
-        {
-            "number": "10",
-            "title": "Reflection",
-            "blocks": [
-                {
-                    "type": "subheading",
-                    "text": "Consistency isn't about making everything identical."
-                },
-                {
-                    "type": "text",
-                    "content": "This project reinforced the importance of examining the relationships between components rather than treating each screen or interaction as an isolated design problem.\n\nA more consistent experience comes from understanding where customers expect familiar behavior—and where context genuinely calls for something different.\n\n<strong>The strongest design decisions are not always about adding something new. Sometimes they're about making what already exists work better together.</strong>"
-                }
-            ]
-        }
-    ]
-},
+    slug: "search-discovery",
+    headline: "The products weren't inconsistent. The experience was.",
+    subtitle:
+      "Auditing the Product Listing Page across App and Small View to identify fragmented layout patterns, establishing module-specific spacing rules, and securing stakeholder approval for a reusable Figma slot-template framework.",
+    client: "Best Buy · Search & Product Discovery",
+    industry: "E-Commerce Systems · Interaction Design · Design Systems",
+    role: "Product & UX Designer",
+    platform: "Mobile App & Small View (SV) Responsive Web",
+    heroImage: "/projects/search-discovery/search-discovery-cover.png",
+    heroAlt:
+      "Search & Discovery PLP Experience — Small View (SV) and App View comparison mockup",
+    richSections: [
+      {
+        number: "01",
+        title: "The Situation",
+        blocks: [
+          {
+            type: "subheading",
+            text: "The page worked. But the experience didn't always feel connected.",
+          },
+          {
+            type: "text",
+            content:
+              "A Product Listing Page brings together multiple systems: product results, filters, sorting, sponsored content, seller information, recommendations, and merchandising.\n\nIndividually, these elements may function as intended. But across the page, similar information and interactions can be presented differently.\n\nThe challenge was not simply to introduce another feature or redesign the entire page.\n\n<strong>It was to identify where the mobile experience lacked consistency, clarity, or predictability.</strong>",
+          },
+          {
+            type: "quote",
+            text: "The opportunity wasn't to redesign everything. It was to understand where the experience stopped behaving like one system.",
+          },
+        ],
+      },
+      {
+        number: "02",
+        title: "Finding the Friction: SV & App Audit",
+        blocks: [
+          {
+            type: "subheading",
+            text: "Focusing on Small View (SV) and Native App touchpoints.",
+          },
+          {
+            type: "text",
+            content:
+              "I examined the PLP as a connected experience, looking specifically at Small View (SV) mobile web and Native App platforms where the majority of customer discovery takes place.\n\nAreas of investigation included:",
+          },
+          {
+            type: "list",
+            items: [
+              "Product information hierarchy and scanning cadence",
+              "Vertical margins, card density, and gutter alignment",
+              "Inconsistent divider treatments across adjacent content blocks",
+              "Sponsored and promoted placement styling within organic results",
+              "Third-party seller carousels and container boundary padding",
+            ],
+          },
+          {
+            type: "text",
+            content:
+              "The goal was to pinpoint layout inconsistencies that created cognitive friction, disrupted scanning rhythm, or made customer decisions harder.",
+          },
+          {
+            type: "subheading",
+            text: "Design Question",
+          },
+          {
+            type: "text",
+            content:
+              "<strong>Where are customers being asked to relearn patterns that should already feel familiar?</strong>",
+          },
+          {
+            type: "image",
+            src: "/projects/search-discovery/app-vs-web-spacing-audit.png",
+            alt: "Interaction and layout density audit comparing App and Mobile Web Product Listing Pages",
+            caption:
+              "SV & App Audit: Cross-platform comparison examining vertical rhythm, separator collisions, and card layout density",
+            layout: "full",
+          },
+          {
+            type: "image",
+            src: "/projects/search-discovery/audit-finding-1-divider-treatment.png",
+            alt: "UI Audit Finding 01: Divider treatment variations between standard and sponsored product cards",
+            caption:
+              "Audit Finding 01: Inconsistent divider treatments across adjacent product cards",
+            layout: "full",
+          },
+          {
+            type: "image",
+            src: "/projects/search-discovery/audit-finding-2-product-spacing.png",
+            alt: "UI Audit Finding 02: Vertical spacing variations affecting scanning rhythm",
+            caption:
+              "Audit Finding 02: Vertical spacing variations and irregular gaps affecting scannability",
+            layout: "full",
+          },
+          {
+            type: "image",
+            src: "/projects/search-discovery/audit-finding-3-sponsored-skus.png",
+            alt: "UI Audit Finding 03: Sponsored SKU treatments and badge hierarchy within the product list",
+            caption:
+              "Audit Finding 03: Distinct treatment of sponsored SKUs competing with standard product lists",
+            layout: "full",
+          },
+        ],
+      },
+      {
+        number: "03",
+        title: "Current vs. Expected: Audit Findings & Acceptance Criteria",
+        blocks: [
+          {
+            type: "subheading",
+            text: "Structuring findings into clear criteria for design and engineering.",
+          },
+          {
+            type: "text",
+            content:
+              "To translate observational friction into actionable design changes, I synthesized the audit into finding cards comparing production evidence against expected source rules across Small View and App:",
+          },
+          {
+            type: "list",
+            items: [
+              "<strong>01 Divider Inconsistencies:</strong> Place one single divider at the documented content boundary across SV and App view. Acceptance: A 16px divider wrapper is used once at the source boundary.",
+              "<strong>02 Product Spacing Inconsistencies:</strong> Standardize product module padding to eliminate irregular scanning gaps. Acceptance: Top/right/bottom/left equals 16/16/8/16 px.",
+              "<strong>04 Excessive Carousel Spacing:</strong> Review carousel module padding against the confirmed Featured rule. Acceptance: Proposed target is 16px on every side.",
+              "<strong>05 Wrong Divider Usage:</strong> Standardize the visual use of trenches and dividers. Prevent divider/trench overlap or arbitrary spacing left for future content.",
+            ],
+          },
+          {
+            type: "image",
+            src: "/projects/search-discovery/plp-audit-current-vs-expected.png",
+            alt: "Current vs. Expected audit synthesis cards showing divider inconsistencies, product spacing rules, carousel padding, and trench avoidance",
+            caption:
+              "Current vs. Expected Audit Synthesis: Documenting divider inconsistencies, product spacing rules (16/16/8/16 px), carousel container padding, and trench avoidance",
+            layout: "full",
+          },
+        ],
+      },
+      {
+        number: "04",
+        title: "Defining the Opportunity",
+        blocks: [
+          {
+            type: "subheading",
+            text: "Not every difference is a problem.",
+          },
+          {
+            type: "text",
+            content:
+              "Consistency does not mean making every component identical.\n\nA difference becomes worth investigating when it introduces unnecessary effort, uncertainty, or an unexpected interaction.\n\nI framed the audit around three questions:",
+          },
+          {
+            type: "list",
+            items: [
+              "<strong>UNDERSTANDABLE</strong> — Can customers quickly recognize what they are looking at and what actions are available?",
+              "<strong>PREDICTABLE</strong> — Do similar interactions behave consistently across the experience?",
+              "<strong>INTENTIONAL</strong> — When patterns differ, is there a meaningful reason grounded in the customer's context?",
+            ],
+          },
+          {
+            type: "quote",
+            text: "Consistency matters where expectations are shared. Context matters where needs differ.",
+          },
+        ],
+      },
+      {
+        number: "05",
+        title: "Looking Beyond Our PLP",
+        blocks: [
+          {
+            type: "subheading",
+            text: "Researching patterns, not copying competitors.",
+          },
+          {
+            type: "text",
+            content:
+              "I reviewed comparable e-commerce experiences to understand how leading retailers approached modular listing layouts across mobile web and native apps.\n\nThe exploration focused on product presentation, filtering, seller information, promoted content, and discovery interactions.\n\nI used these references to distinguish between established conventions, emerging approaches, and context-dependent solutions that required validation before adoption.",
+          },
+          {
+            type: "quote",
+            text: "Competitive research gave us reference points, not ready-made answers.",
+          },
+        ],
+      },
+      {
+        number: "06",
+        title: "Defined Layout Rules: Module-Specific Spacing",
+        blocks: [
+          {
+            type: "subheading",
+            text: "Tailoring layout rules to support distinct content types without sacrificing rhythm.",
+          },
+          {
+            type: "text",
+            content:
+              "Rather than enforcing an artificial, single-margin rule across incompatible components, we established module-specific spacing rules for Small View and App View:\n\nThese variations support different content types while preserving vertical consistency:",
+          },
+          {
+            type: "list",
+            items: [
+              "<strong>Product Modules — 16px Top · 16px Right · 8px Bottom · 16px Left:</strong> The reduced 8px bottom spacing tightens visual proximity to the card's separator/boundary, preserving a scannable vertical cadence across repetitive product lists without dead space.",
+              "<strong>Standard Modules — 16px on All Sides:</strong> Uniform 16px padding creates balanced breathing room for utility components, promotional banners, and filter/sort controls.",
+              "<strong>Featured Modules — 16px on All Sides:</strong> Uniform 16px padding provides visual prominence for intent-driven categories, curated spotlights, or brand banners without crowding adjacent modules.",
+            ],
+          },
+          {
+            type: "subheading",
+            text: "Large View (Desktop) Scope — Exploratory Consideration",
+          },
+          {
+            type: "text",
+            content:
+              "<em>Large View (Desktop) is part of the broader initiative but is not the primary focus of the current work. A 24px all-around spacing rule is currently under consideration as an exploratory concept, but is NOT finalized or approved. All primary implementation and slot-template work remains concentrated on Small View and App View.</em>",
+          },
+        ],
+      },
+      {
+        number: "07",
+        title: "Exploring Third-Party Discovery & Carousels",
+        blocks: [
+          {
+            type: "subheading",
+            text: "Surfacing additional choices without disrupting the primary search journey.",
+          },
+          {
+            type: "text",
+            content:
+              "One key area explored within the broader PLP work was the presentation and discovery of third-party products.\n\nThis required balancing discoverability, information hierarchy, customer control, and container boundary spacing within the surrounding product feed.",
+          },
+          {
+            type: "image",
+            src: "/projects/search-discovery/audit-finding-4-carousel-spacing.png",
+            alt: "UI Exploration: Third-party carousel card spacing and content grouping",
+            caption:
+              "Audit Finding 04 & Exploration: Balancing carousel container spacing and 3P card density against confirmed Featured rules",
+            layout: "full",
+          },
+        ],
+      },
+      {
+        number: "08",
+        title: "Reusable Figma Slot Templates",
+        blocks: [
+          {
+            type: "subheading",
+            text: "Evolving visual placeholders into functional component slots.",
+          },
+          {
+            type: "text",
+            content:
+              "As part of the Search & Discovery initiative at Best Buy, I developed a reusable PLP composition framework in Figma, transforming static mockup placeholders into functional component slots.\n\nInstead of relying on legacy INSTANCE_SWAP overrides, the library exposes Figma's native <strong>Slot property</strong>. Designers simply select the module, then place the linked content instance directly in its slot container with pre-baked padding rules.",
+          },
+          {
+            type: "list",
+            items: [
+              "<strong>Native Figma Slot Property:</strong> Direct instance insertion into responsive slots (Product, Standard, Featured) with locked padding.",
+              "<strong>Embedded Reference Skeletons:</strong> Pre-assembled page skeletons that define the authorized module order before handoff.",
+              "<strong>Standardized Separator Wrappers:</strong> Automated 16px divider placement at documented boundaries to prevent trench collisions.",
+            ],
+          },
+          {
+            type: "image",
+            src: "/projects/search-discovery/figma-slot-placeholder-modules.png",
+            alt: "Figma slot placeholder architecture and module-specific padding rules across Product, Standard, and Featured variants",
+            caption:
+              "Figma Slot Architecture: Module-specific padding variants (Product 16-16-8-16, Standard 16-all, Featured 16-all) with exploratory 24px desktop reference",
+            layout: "full",
+          },
+          {
+            type: "image",
+            src: "/projects/search-discovery/figma-plp-app-template-slots.png",
+            alt: "Full Product Listing Page composition: App template wireframe, populated screen with intent/sponsored slots, and component hierarchy stack",
+            caption:
+              "App PLP Slot Template: Modular component hierarchy stack, wireframe slots, and populated intent/sponsored screens",
+            layout: "full",
+          },
+        ],
+      },
+      {
+        number: "09",
+        title: "Designer Guidance & Workflow: Select → Swap → Review",
+        blocks: [
+          {
+            type: "subheading",
+            text: "A standardized 3-step operating guide for squad designers.",
+          },
+          {
+            type: "text",
+            content:
+              "To make adoption intuitive across multi-disciplinary squads, I created the <strong>PLP Slot Templates — Designers Usage Guide</strong> detailing an efficient 3-step workflow:\n\n<strong>01 SELECT:</strong> Choose the viewport template (App or Small View).\n<strong>02 SWAP:</strong> Place linked content instance in the exposed Slot property.\n<strong>03 REVIEW:</strong> Check the finished order against the reference skeleton and verify separator treatment before handoff.",
+          },
+          {
+            type: "image",
+            src: "/projects/search-discovery/plp-slot-templates-designer-guide.png",
+            alt: "PLP Slot Templates — Designers Usage Guide: Getting started workflow (Select, Swap, Review), App and Small View templates, Slot property mechanics, and Reference Skeleton",
+            caption:
+              "PLP Slot Templates — Designers Usage Guide: Documenting the Select → Swap → Review workflow, native Slot property usage, App + Small View wireframes, and Reference Skeleton",
+            layout: "full",
+          },
+        ],
+      },
+      {
+        number: "10",
+        title: "Designing for the Whole Page",
+        blocks: [
+          {
+            type: "subheading",
+            text: "A component still has to work inside a busy, full-page PLP.",
+          },
+          {
+            type: "text",
+            content:
+              "A carousel or filtering pattern cannot be evaluated only in isolation.\n\nIts placement and behavior affect the surrounding product results, information hierarchy, promoted content, and overall scrolling cadence.\n\nWe validated the slot templates across complete, full-page category matrices in Small View to ensure visual harmony across high-density and promotional shopping journeys.",
+          },
+          {
+            type: "quote",
+            text: "The goal wasn't simply to make a component more visible. It was to make it fit the whole experience.",
+          },
+          {
+            type: "image",
+            src: "/projects/search-discovery/cross-product-audit-matrix.png",
+            alt: "Full-page PLP audit matrix across viewports and product categories in Small View",
+            caption:
+              "Holistic PLP Matrix: Evaluating full-page vertical rhythm, spacing trenches, and content transitions in context across Small View",
+            layout: "full",
+          },
+        ],
+      },
+      {
+        number: "11",
+        title: "Outcomes & Confirmed Stakeholder Approval",
+        blocks: [
+          {
+            type: "subheading",
+            text: "Confirmed milestone: Reusable slot template approach approved as the standard direction.",
+          },
+          {
+            type: "text",
+            content:
+              "<strong>Confirmed Project Milestone:</strong> The reusable, slot-based PLP template approach has been <strong>formally approved by product and design leadership as the standard direction for future PLP composition</strong> at Best Buy.\n\n<em>Framing Note: While the framework and template approach have secured confirmed stakeholder approval as the official standard direction, implementation is rolling out progressively across squads. This represents an approved architectural foundation, rather than an immediate full-scale code deployment across every product category.</em>",
+          },
+          {
+            type: "list",
+            items: [
+              "<strong>Formal Stakeholder Sign-Off:</strong> Approved standard direction for future PLP page composition across App and Small View.",
+              "<strong>Eliminated Layout Guesswork:</strong> Squad designers utilize pre-configured 16/16/8/16 and 16-all slots rather than calculating ad-hoc margins.",
+              "<strong>Predictable Engineering Handoff:</strong> Reference skeletons and divider rules bridge the gap between Figma components and front-end layout rendering.",
+              "<strong>Consistent Customer Rhythm:</strong> A unified spacing cadence for millions of customers discovering products across Best Buy mobile touchpoints.",
+            ],
+          },
+        ],
+      },
+      {
+        number: "12",
+        title: "Reflection",
+        blocks: [
+          {
+            type: "subheading",
+            text: "Consistency isn't about making everything identical.",
+          },
+          {
+            type: "text",
+            content:
+              "This project reinforced the importance of examining the relationships between components rather than treating each screen or interaction as an isolated design problem.\n\nA more consistent experience comes from understanding where customers expect familiar behavior—and where context genuinely calls for something different.\n\n<strong>The strongest design decisions are not always about adding something new. Sometimes they're about making what already exists work better together.</strong>",
+          },
+        ],
+      },
+    ],
+  },
 
   "madras-mandi": {
     slug: "madras-mandi",
